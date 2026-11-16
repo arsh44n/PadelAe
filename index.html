@@ -245,13 +245,26 @@
 
           <!-- ================= HERO SECTION (CLEAN CINEMATIC ZOOM WITH LOW-MID BUTTONS) ================= -->
   <section class="relative min-h-[92vh] sm:min-h-screen flex items-end justify-center overflow-hidden pb-14 sm:pb-20">
-    <!-- Background Video: Abu Dhabi Earth-to-Location Zoom Video -->
+    <!-- Background Video: Abu Dhabi Earth-to-Location Zoom Video (Fast-Start Instant Stream with Poster) -->
     <div class="absolute inset-0 z-0">
-      <video id="hero-video-player" onclick="handleVideoClick(this)" onmouseenter="handleVideoHover(this)" onmouseleave="handleVideoLeave(this)" class="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05] cursor-pointer" autoplay loop muted playsinline preload="auto" title="Click anywhere to unmute/mute">
+      <video id="hero-video-player" 
+             onclick="handleVideoClick(this)" 
+             onmouseenter="handleVideoHover(this)" 
+             onmouseleave="handleVideoLeave(this)" 
+             class="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05] cursor-pointer" 
+             autoplay 
+             loop 
+             muted 
+             playsinline 
+             webkit-playsinline 
+             preload="auto" 
+             poster="public/assets/courts/Abu%20dhabi%20Padel%20AE/hero_poster.jpg" 
+             title="Click anywhere to unmute/mute">
+        <source src="public/assets/courts/Abu%20dhabi%20Padel%20AE/hero_fast.mp4" type="video/mp4">
         <source src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Horizontal%20hero%20section%20video%20for%20Abu%20Dhabi%20Court%20starting%20from%20the%20whole%20Earth,%20then%20going%20to%20the%20specific%20location%20through%20Google%20maps%20and%20showing%20the%20interior%20of%20the%20facility%20for%20Abu%20Dhabi%20can%20be%20used%20as%20a%20hero%20section%20for%20one%20of%20the%20pages%20.mp4" type="video/mp4">
       </video>
       <!-- Country Club Emerald & Obsidian Subtle Vignette (Clear Center) -->
-      <div class="absolute inset-0 bg-gradient-to-t from-[#0A4834]/95 via-transparent to-[#0A4834]/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A4834]/95 via-transparent to-[#0A4834]/30 pointer-events-none"></div>
     </div>
 
     <!-- Floating Audio Unmute Toggle Pill -->
@@ -482,31 +495,31 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
             <!-- Abu Dhabi (FIRST) -->
-            <div onclick="setBookingVenue('Abu Dhabi (Musaffah)', 6)" id="b-venue-ad" class="tilt-card cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-[#EBE1CF]/40 text-left transition-all flex items-center space-x-4 shadow-md group relative">
-              <div class="w-24 h-18 rounded-xl overflow-hidden shrink-0 bg-stone-900 border border-black/10">
-                <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png" alt="Abu Dhabi Arena" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+            <div onclick="setBookingVenue('Abu Dhabi (Musaffah)', 6)" id="b-venue-ad" class="tilt-card cursor-pointer p-3.5 sm:p-4 rounded-2xl border-2 border-[#0A4834] bg-[#EBE1CF]/40 text-left transition-all flex items-center space-x-3.5 sm:space-x-4 shadow-md group relative">
+              <div class="w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-stone-900 border border-black/10 aspect-[3/4]">
+                <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/abu_dhabi_court_portrait.png" alt="Abu Dhabi Arena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
               </div>
-              <div class="flex-1">
+              <div class="flex-1 min-w-0">
                 <div class="flex items-center space-x-2">
-                  <span class="text-base font-extrabold text-[#0A4834]">Abu Dhabi (Musaffah)</span>
-                  <span id="ad-check" class="text-xs bg-[#0A4834] text-white font-bold px-1.5 py-0.5 rounded-full">✓</span>
+                  <span class="text-sm sm:text-base font-extrabold text-[#0A4834] truncate">Abu Dhabi (Musaffah)</span>
+                  <span id="ad-check" class="text-xs bg-[#0A4834] text-white font-bold px-1.5 py-0.5 rounded-full shrink-0">✓</span>
                 </div>
-                <span class="text-[11px] text-[#635345] font-semibold block mt-0.5">Flagship Arena • Championship Indoor AC Courts</span>
+                <span class="text-[11px] text-[#635345] font-semibold block mt-0.5 line-clamp-1">Flagship Arena • Championship Indoor AC Courts</span>
                 <span class="text-[10px] text-[#8F7151] font-black uppercase tracking-wider block mt-1">Available 7:30 AM – Midnight</span>
               </div>
             </div>
 
             <!-- Dubai (SECOND) -->
-            <div onclick="setBookingVenue('Dubai (Al Quoz)', 18)" id="b-venue-dubai" class="tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-white text-left transition-all flex items-center space-x-4 hover:border-[#8F7151] group relative">
-              <div class="w-24 h-18 rounded-xl overflow-hidden shrink-0 bg-stone-900 border border-black/10">
-                <img src="public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png" alt="Dubai Court" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+            <div onclick="setBookingVenue('Dubai (Al Quoz)', 18)" id="b-venue-dubai" class="tilt-card cursor-pointer p-3.5 sm:p-4 rounded-2xl border-2 border-black/10 bg-white text-left transition-all flex items-center space-x-3.5 sm:space-x-4 hover:border-[#8F7151] group relative">
+              <div class="w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-stone-900 border border-black/10 aspect-[3/4]">
+                <img src="public/assets/courts/Dubai%20Padel%20Ae/dubai_court_portrait.png" alt="Dubai Court" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
               </div>
-              <div class="flex-1">
+              <div class="flex-1 min-w-0">
                 <div class="flex items-center space-x-2">
-                  <span class="text-base font-extrabold text-[#0A4834]">Dubai (Al Quoz)</span>
-                  <span id="dubai-check" class="text-xs bg-[#0A4834] text-white font-bold px-1.5 py-0.5 rounded-full hidden">✓</span>
+                  <span class="text-sm sm:text-base font-extrabold text-[#0A4834] truncate">Dubai (Al Quoz)</span>
+                  <span id="dubai-check" class="text-xs bg-[#0A4834] text-white font-bold px-1.5 py-0.5 rounded-full hidden shrink-0">✓</span>
                 </div>
-                <span class="text-[11px] text-[#635345] font-semibold block mt-0.5">18 Championship Courts • Valet & The Bandeja Café</span>
+                <span class="text-[11px] text-[#635345] font-semibold block mt-0.5 line-clamp-1">18 Championship Courts • Valet & The Bandeja Café</span>
                 <span class="text-[10px] text-[#8F7151] font-black uppercase tracking-wider block mt-1">Available 7:30 AM – Midnight</span>
               </div>
             </div>
@@ -706,222 +719,256 @@
 
     </div>
   </section>
-  <!-- ================= LUXURY PRO ATHLETE BENTO SHOWCASE (SORIN SPORTS INSPIRATION WITH 3D CUTOUT) ================= -->
-  <!-- ================= SECTION 2: THE PADELAE STANDARD - SIGNATURE CLUB USPS (PINNED SCRUB & COMMUNITY STATEMENT) ================= -->
-  <section id="club-usps" class="relative bg-[#062B1F] text-[#EBE1CF]" style="min-height: 280vh;">
-    <!-- Sticky Full-Screen Viewport -->
-    <div id="club-usps-sticky" class="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden border-b border-[#8F7151]/40 bg-[#062B1F]">
+  <!-- ================= SECTION 2: THE PADELAE STANDARD - SIGNATURE CLUB USPS (8 INTERACTIVE PILLARS) ================= -->
+  <section id="club-usps" class="py-14 sm:py-20 bg-[#062B1F] text-[#EBE1CF] relative border-b border-[#8F7151]/40 overflow-hidden reveal-on-scroll">
+    
+    <!-- Ambient Luxury Radial Glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,72,52,0.45)_0%,#062B1F_75%)] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <!-- Subtle Ambient Emerald Glow (Exact Match to Image 2) -->
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,72,52,0.45)_0%,#062B1F_75%)] pointer-events-none"></div>
-
-      <!-- VIEW 1: SIGNATURE CLUB USPS SHOWCASE (Exact Match to Image 1) -->
-      <div id="usp-showcase-view" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-300">
-        
-        <!-- Header Row: Title & Scroll Step Progress Indicator -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-5 sm:mb-7 gap-3">
-          <div class="text-left">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#0A4834] border border-[#8F7151]/50 text-[#EBE1CF] text-[10px] sm:text-[11px] font-bold uppercase tracking-widest mb-1.5 shadow-inner">
-              <span class="w-2 h-2 rounded-full bg-[#8F7151]"></span>
-              <span>THE PADELAE STANDARD • INTERACTIVE CLUB SHOWCASE</span>
-            </div>
-            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black font-display uppercase text-white leading-tight tracking-tight">
-              <span>SIGNATURE CLUB USPS • </span><span class="text-[#8F7151]">ATHLETIC LUXURY</span>
-            </h2>
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+        <div class="text-left">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#0A4834] border border-[#8F7151]/50 text-[#EBE1CF] text-[10px] sm:text-[11px] font-bold uppercase tracking-widest mb-2 shadow-inner">
+            <span class="w-2 h-2 rounded-full bg-[#8F7151]"></span>
+            <span>The PadelAE Standard • 8 Signature Pillars</span>
           </div>
-
-          <!-- Top Right: Step Counter & Progress Bar (Exact Match to Image 1) -->
-          <div class="flex items-center space-x-3 self-start md:self-end shrink-0">
-            <div>
-              <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-[#EBE1CF]/60 block text-right">SCROLL STEP</span>
-              <span id="usp-scroll-step-label" class="text-base sm:text-lg font-black font-mono text-white text-right block">01 <span class="text-[#8F7151] font-normal">/ 06</span></span>
-            </div>
-            <div class="w-24 sm:w-32 h-2 rounded-full bg-black/60 overflow-hidden border border-[#8F7151]/40 shadow-inner">
-              <div id="usp-scroll-progress-fill" class="h-full bg-gradient-to-r from-[#8F7151] to-[#EBE1CF] rounded-full transition-all duration-300" style="width: 16.66%;"></div>
-            </div>
-          </div>
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black font-display uppercase text-white leading-tight tracking-tight">
+            <span>Signature Club USPs • </span><span class="text-[#8F7151]">Athletic Luxury</span>
+          </h2>
+          <p class="mt-2 text-[#EBE1CF]/80 text-xs sm:text-sm font-light max-w-xl">
+            Click or tap any pillar below to inspect world-class amenities, head coaching specs, and club facilities.
+          </p>
         </div>
 
-        <!-- 6-Pillar Interactive Bento Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-7 items-stretch">
+        <!-- Selected Pillar Badge -->
+        <div class="flex items-center space-x-3 self-start md:self-end shrink-0">
+          <div class="text-left md:text-right">
+            <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-[#EBE1CF]/60 block">Selected Pillar</span>
+            <span id="usp-active-pill-counter" class="text-base sm:text-lg font-black font-mono text-white">01 <span class="text-[#8F7151] font-normal">/ 08</span></span>
+          </div>
+          <div class="w-20 sm:w-28 h-2 rounded-full bg-black/60 overflow-hidden border border-[#8F7151]/40 shadow-inner">
+            <div id="usp-scroll-progress-fill" class="h-full bg-gradient-to-r from-[#8F7151] to-[#EBE1CF] rounded-full transition-all duration-300" style="width: 12.5%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Quick Horizontal Scroller (Shows on Mobile/Tablet < 1024px) -->
+      <div class="block lg:hidden mb-6">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-[#8F7151] block mb-2 font-bold">Tap To Select Pillar:</span>
+        <div class="flex space-x-2 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0" id="usp-mobile-pills">
+          <button type="button" onclick="selectClubUsp(0)" id="usp-mob-pill-0" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#EBE1CF] text-[#0A4834] font-bold text-xs border border-[#EBE1CF] shadow-md transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">01</span><span>Arenas</span>
+          </button>
+          <button type="button" onclick="selectClubUsp(1)" id="usp-mob-pill-1" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">02</span><span>Coaching</span>
+          </button>
+          <button type="button" onclick="selectClubUsp(2)" id="usp-mob-pill-2" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">03</span><span>Café</span>
+          </button>
+          <button type="button" onclick="selectClubUsp(3)" id="usp-mob-pill-3" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">04</span><span>Shops</span>
+          </button>
+          <button type="button" onclick="selectClubUsp(4)" id="usp-mob-pill-4" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">05</span><span>Leagues</span>
+          </button>
+          <button type="button" onclick="selectClubUsp(5)" id="usp-mob-pill-5" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">06</span><span>Valet</span>
+          </button>
+          <button type="button" onclick="selectClubUsp(6)" id="usp-mob-pill-6" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">07</span><span>Ladies</span>
+          </button>
+          <button type="button" onclick="selectClubUsp(7)" id="usp-mob-pill-7" class="shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5">
+            <span class="font-mono text-[10px]">08</span><span>Juniors</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Interactive Grid: Left 8 Point Selectors (Desktop) + Right Interactive Stage Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+        
+        <!-- Left: 8 USP Pillar Selector Cards (Desktop & Tablet) -->
+        <div class="hidden lg:flex lg:col-span-5 flex-col space-y-2 justify-between" id="usp-tabs-list">
           
-          <!-- Left: 6 USP Pillar Selector Cards -->
-          <div class="lg:col-span-5 flex flex-col space-y-2 sm:space-y-2.5 justify-between" id="usp-tabs-list">
-            
-            <!-- Pillar 1: 18 Championship Arenas -->
-            <div onclick="selectClubUsp(0)" id="usp-tab-0" class="usp-tab-active cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#EBE1CF] bg-[#EBE1CF] text-[#0A4834] transition-all duration-300 group flex items-start space-x-3 shadow-lg">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
-                01
+          <!-- Pillar 1 -->
+          <div onclick="selectClubUsp(0)" id="usp-tab-0" class="usp-tab-active cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#EBE1CF] bg-[#EBE1CF] text-[#0A4834] transition-all duration-300 group flex items-start space-x-3 shadow-lg">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">01</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-[#0A4834] transition-colors truncate">18 Championship Arenas</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">DUBAI & AD</span>
               </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <h4 class="text-xs sm:text-sm font-bold text-[#0A4834] transition-colors truncate">18 Championship Arenas</h4>
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">DUBAI & AD</span>
-                </div>
-                <p class="text-[11px] sm:text-xs text-[#0A4834]/80 mt-0.5 font-normal line-clamp-2">Panoramic glass, 100% climate-controlled at 21°C, and shadowless lighting.</p>
-              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#0A4834]/80 mt-0.5 font-normal line-clamp-1">Panoramic glass, 100% climate-controlled at 21°C.</p>
             </div>
-
-            <!-- Pillar 2: European Master Academy -->
-            <div onclick="selectClubUsp(1)" id="usp-tab-1" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
-                02
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">European Master Academy</h4>
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">HEAD COACHES</span>
-                </div>
-                <p class="text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-2">Elite coaches André Lerias & Enric Arauz delivering biometric tactical progression.</p>
-              </div>
-            </div>
-
-            <!-- Pillar 3: The Bandeja Café & Clubhouse -->
-            <div onclick="selectClubUsp(2)" id="usp-tab-2" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
-                03
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">The Bandeja Café & Clubhouse</h4>
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">ARTISANAL</span>
-                </div>
-                <p class="text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-2">Single-origin espresso, recovery protein smoothies, and community spectator bar.</p>
-              </div>
-            </div>
-
-            <!-- Pillar 4: Padel Life & Sports Life Shops -->
-            <div onclick="selectClubUsp(3)" id="usp-tab-3" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
-                04
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">Padel Life & Sports Life Shops</h4>
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">BOUTIQUES</span>
-                </div>
-                <p class="text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-2">Bullpadel & Head tournament rackets with precision weight customization.</p>
-              </div>
-            </div>
-
-            <!-- Pillar 5: Tournaments & Arena Buyouts -->
-            <div onclick="selectClubUsp(4)" id="usp-tab-4" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
-                05
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">Tournaments & Arena Buyouts</h4>
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">RANKED</span>
-                </div>
-                <p class="text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-2">Weekly Americano formats, corporate buyouts, and Red Bull / Mashreq events.</p>
-              </div>
-            </div>
-
-            <!-- Pillar 6: 7-Star Valet & Hospitality -->
-            <div onclick="selectClubUsp(5)" id="usp-tab-5" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
-                06
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">7-Star Valet & Hospitality</h4>
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">CONCIERGE</span>
-                </div>
-                <p class="text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-2">Doorstep valet parking, luxury locker suites, and sightline ladies sanctuary.</p>
-              </div>
-            </div>
-
           </div>
 
-          <!-- Right: 3D Interactive Stage with Cutouts, Dynamic Stats & Cursor Reactivity -->
-          <div class="lg:col-span-7 relative min-h-[360px] sm:min-h-[440px] lg:min-h-[480px] rounded-3xl bg-[#0A4834] border-2 border-[#8F7151]/40 p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl cutout-3d-wrapper">
-            
-            <!-- Background Brand Monogram Watermark -->
-            <div class="absolute inset-0 opacity-15 pointer-events-none flex items-center justify-center">
-              <img src="public/assets/branding/Padel%20AE%20green%20logo.png" alt="Padelae Monogram" class="w-[360px] h-auto object-contain">
+          <!-- Pillar 2 -->
+          <div onclick="selectClubUsp(1)" id="usp-tab-1" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">02</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">European Master Academy</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">HEAD COACHES</span>
+              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1">Elite head coaches delivering biometric tactical mastery.</p>
             </div>
+          </div>
 
-            <!-- Dynamic USP Highlight Card -->
-            <div class="relative z-10 max-w-sm sm:max-w-md">
-              <span id="usp-stage-badge" class="inline-block px-3.5 py-1 rounded-full bg-[#8F7151] text-white text-[10px] sm:text-[11px] font-black uppercase tracking-wider mb-2 sm:mb-3 shadow-md">
+          <!-- Pillar 3 -->
+          <div onclick="selectClubUsp(2)" id="usp-tab-2" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">03</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">The Bandeja Café & Clubhouse</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">ARTISANAL</span>
+              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1">Specialty single-origin espresso and recovery smoothies.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div onclick="selectClubUsp(3)" id="usp-tab-3" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">04</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">Padel Life & Sports Life Shops</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">BOUTIQUES</span>
+              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1">Official Head & Bullpadel tournament rackets with demo trials.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 5 -->
+          <div onclick="selectClubUsp(4)" id="usp-tab-4" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">05</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">Tournaments & Arena Buyouts</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">RANKED</span>
+              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1">Weekly Americano formats, corporate buyouts, and leagues.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 6 -->
+          <div onclick="selectClubUsp(5)" id="usp-tab-5" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">06</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">7-Star Valet & VIP Hospitality</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">CONCIERGE</span>
+              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1">Doorstep valet parking, luxury locker suites, and host.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 7 -->
+          <div onclick="selectClubUsp(6)" id="usp-tab-6" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">07</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">Ladies Sightline Sanctuary</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">100% PRIVACY</span>
+              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1">Protected private wing with certified female coaches.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 8 -->
+          <div onclick="selectClubUsp(7)" id="usp-tab-7" class="cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3">
+            <div class="usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">08</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <h4 class="usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate">Junior Academy & Grassroots</h4>
+                <span class="usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0">YOUTH DEV</span>
+              </div>
+              <p class="usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1">Structured athletic nurturing for junior players aged 6–16.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: 3D Interactive Stage Card with Regarding Picture & Cutout -->
+        <div class="lg:col-span-7 relative rounded-3xl bg-[#0A4834] border-2 border-[#8F7151]/40 p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl cutout-3d-wrapper">
+          
+          <!-- Background Brand Monogram Watermark -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none flex items-center justify-center">
+            <img src="public/assets/branding/Padel%20AE%20green%20logo.png" alt="Padelae Monogram" class="w-[340px] h-auto object-contain">
+          </div>
+
+          <!-- Top Stage Info -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-2">
+              <span id="usp-stage-badge" class="inline-block px-3.5 py-1 rounded-full bg-[#8F7151] text-white text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-md">
                 PILLAR 01 • ARENAS
               </span>
-              <h3 id="usp-stage-title" class="text-2xl sm:text-3xl lg:text-4xl font-black font-display text-white leading-tight">
-                18 Championship Arenas
-              </h3>
-              <p id="usp-stage-desc" class="text-xs sm:text-sm text-[#EBE1CF]/85 mt-2 leading-relaxed">
-                100% climate-controlled at constant 21°C with 12mm acoustic panoramic glass and zero dead-spots.
-              </p>
+              <span class="text-[10px] font-mono text-[#8F7151] uppercase font-bold tracking-widest hidden sm:inline">PadelAE Signature</span>
+            </div>
 
-              <!-- Quick Telemetry Specs -->
-              <div id="usp-stage-stats" class="grid grid-cols-2 gap-2.5 sm:gap-3 mt-4 sm:mt-5">
-                <div class="p-2.5 sm:p-3 rounded-xl bg-[#062B1F]/90 border border-[#8F7151]/30 backdrop-blur-sm">
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase block">INDOOR CLIMATE</span>
-                  <span class="text-sm sm:text-base font-bold text-white">21°C Constant</span>
-                </div>
-                <div class="p-2.5 sm:p-3 rounded-xl bg-[#062B1F]/90 border border-[#8F7151]/30 backdrop-blur-sm">
-                  <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase block">GLASS SPECS</span>
-                  <span class="text-sm sm:text-base font-bold text-white">12mm Acoustic WPT</span>
-                </div>
+            <h3 id="usp-stage-title" class="text-2xl sm:text-3xl lg:text-4xl font-black font-display text-white leading-tight">
+              18 Championship Arenas
+            </h3>
+            
+            <p id="usp-stage-desc" class="text-xs sm:text-sm text-[#EBE1CF]/85 mt-2 leading-relaxed max-w-xl font-light">
+              100% climate-controlled at constant 21°C with 12mm acoustic panoramic glass and zero dead-spots across Dubai & Abu Dhabi.
+            </p>
+
+            <!-- Quick Telemetry Specs -->
+            <div id="usp-stage-stats" class="grid grid-cols-2 gap-2.5 sm:gap-3 mt-4 max-w-md">
+              <div class="p-2.5 sm:p-3 rounded-xl bg-[#062B1F]/90 border border-[#8F7151]/30 backdrop-blur-sm">
+                <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase block">INDOOR CLIMATE</span>
+                <span class="text-sm sm:text-base font-bold text-white">21°C Constant</span>
+              </div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-[#062B1F]/90 border border-[#8F7151]/30 backdrop-blur-sm">
+                <span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase block">GLASS SPECS</span>
+                <span class="text-sm sm:text-base font-bold text-white">12mm Acoustic WPT</span>
               </div>
             </div>
-
-            <!-- Interactive 3D Cutout of World Tour Pro Martin Di Nenno (Reacts to Cursor) -->
-            <div id="cutout-3d-container" class="absolute -bottom-6 -right-2 sm:-bottom-8 sm:right-2 w-[220px] sm:w-[320px] lg:w-[360px] pointer-events-none z-20 transition-transform duration-300 ease-out">
-              <img id="cutout-player" 
-                   src="public/assets/coaching/Martin-Di-Nenno-volee-de-revers-Madrid-P1-2023-scaled-Background-Removed-e1706706342816.png" 
-                   alt="Martin Di Nenno Volley Cutout" 
-                   class="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)] filter brightness-[1.03]">
-            </div>
-
-            <!-- Stage Bottom Footer: Brand Partner Badges & Scroll Callout -->
-            <div class="relative z-10 pt-4 sm:pt-5 border-t border-[#8F7151]/30 flex flex-wrap items-center justify-between gap-3 text-xs">
-              <div class="flex items-center space-x-3">
-                <span class="text-[10px] uppercase font-bold text-[#8F7151]">OFFICIAL PARTNERS:</span>
-                <img src="public/assets/partners/Head-Logo-768x432-1.png" alt="Head Padel" class="h-3.5 sm:h-4 w-auto object-contain brightness-0 invert opacity-75">
-                <img src="public/assets/partners/Mashreq-Bank_idRkzSrbkL_0-1.png" alt="Mashreq" class="h-3.5 sm:h-4 w-auto object-contain brightness-0 invert opacity-75">
-              </div>
-              <span class="text-[10px] sm:text-[11px] font-mono text-[#EBE1CF]/60 flex items-center space-x-1">
-                <span>&darr; Scroll to scrub pillars</span>
-              </span>
-            </div>
-
           </div>
 
-        </div>
+          <!-- Regarding Picture Container with Smooth Transition -->
+          <div class="relative z-10 my-6">
+            <div class="relative w-full h-48 sm:h-56 md:h-64 rounded-2xl overflow-hidden border border-[#8F7151]/40 bg-stone-900 shadow-xl group">
+              <img id="usp-stage-image" 
+                   src="public/assets/courts/Abu%20dhabi%20Padel%20AE/abu_dhabi_court_portrait.png" 
+                   alt="Pillar Visual" 
+                   class="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+              
+              <!-- Subtle Floating Badge on Image -->
+              <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#062B1F]/80 backdrop-blur-md border border-[#8F7151]/40 text-[10px] text-[#EBE1CF] font-bold">
+                Official Facility Asset
+              </div>
+            </div>
+          </div>
 
-        <!-- Section Bottom Indicator -->
-        <div class="text-center mt-5 sm:mt-6 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#8F7151] flex items-center justify-center space-x-2 animate-bounce">
-          <span>SCROLL DOWN TO PROGRESS THROUGH ALL 6 PILLARS</span>
-          <span>&darr;</span>
+          <!-- Stage Bottom Footer: Brand Partner Badges & Instruction -->
+          <div class="relative z-10 pt-4 border-t border-[#8F7151]/30 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center space-x-3">
+              <span class="text-[10px] uppercase font-bold text-[#8F7151]">OFFICIAL PARTNERS:</span>
+              <img src="public/assets/partners/Head-Logo-768x432-1.png" alt="Head Padel" class="h-3.5 sm:h-4 w-auto object-contain brightness-0 invert opacity-75">
+              <img src="public/assets/partners/Mashreq-Bank_idRkzSrbkL_0-1.png" alt="Mashreq" class="h-3.5 sm:h-4 w-auto object-contain brightness-0 invert opacity-75">
+            </div>
+            <a href="courts.html" class="text-[11px] font-mono text-[#EBE1CF] hover:text-[#8F7151] transition-colors flex items-center space-x-1 font-bold">
+              <span>Explore Court Specifications</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
         </div>
 
       </div>
 
-      <!-- VIEW 2: THE COMMUNITY STATEMENT (Word-to-Word Appearance on Pure Green Canvas - Matches Image 2) -->
-      <div id="usp-community-view" class="absolute inset-0 flex flex-col items-center justify-center px-4 sm:px-6 pointer-events-none opacity-0 transition-all duration-300 z-20">
-        <div class="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-          
-          <div id="community-badge" class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] text-[11px] sm:text-xs font-bold uppercase tracking-widest opacity-0 transform translate-y-3 transition-all duration-500 shadow-2xl">
-            <span class="w-2 h-2 rounded-full bg-[#8F7151] animate-ping"></span>
-            <span>The PadelAE Philosophy</span>
-          </div>
-
-          <h2 class="text-3xl sm:text-5xl lg:text-7xl font-black font-display uppercase tracking-tight leading-tight text-white flex flex-wrap justify-center items-center gap-x-3 sm:gap-x-5 gap-y-2 sm:gap-y-3">
-            <span class="community-word inline-block opacity-15 transform translate-y-4 scale-95 transition-all duration-300">More</span>
-            <span class="community-word inline-block opacity-15 transform translate-y-4 scale-95 transition-all duration-300">than</span>
-            <span class="community-word inline-block opacity-15 transform translate-y-4 scale-95 transition-all duration-300">a</span>
-            <span class="community-word inline-block text-[#8F7151] opacity-15 transform translate-y-4 scale-95 transition-all duration-300 font-serif italic">court,</span>
-            <span class="community-word inline-block opacity-15 transform translate-y-4 scale-95 transition-all duration-300">it's</span>
-            <span class="community-word inline-block opacity-15 transform translate-y-4 scale-95 transition-all duration-300">a</span>
-            <span class="community-word inline-block text-[#EBE1CF] opacity-15 transform translate-y-4 scale-95 transition-all duration-300 drop-shadow-[0_0_25px_rgba(235,225,207,0.4)]">community.</span>
-          </h2>
-
-          <p id="community-subtext" class="text-xs sm:text-base font-light text-[#EBE1CF]/80 max-w-xl mx-auto opacity-0 transform translate-y-3 transition-all duration-500 leading-relaxed">
-            Where championship athletic standard meets five-star country club hospitality, master coaching, and lifelong camaraderie.
-          </p>
-        </div>
+      <!-- Luxury Philosophy Card (Replacing Extra Empty Space with Meaningful Brand Value) -->
+      <div class="mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0A4834] via-[#062B1F] to-[#0A4834] border border-[#8F7151]/50 text-center shadow-2xl relative overflow-hidden">
+        <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#8F7151] font-bold block mb-2">The PadelAE Philosophy</span>
+        <h3 class="text-xl sm:text-3xl md:text-4xl font-black font-display uppercase tracking-tight text-white leading-tight">
+          "More than a court, <span class="text-[#EBE1CF] italic font-serif">it's a community."</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-[#EBE1CF]/80 max-w-2xl mx-auto mt-2 font-light">
+          Where championship athletic standards meet five-star country club hospitality, world-class coaching, and lifelong camaraderie.
+        </p>
       </div>
 
     </div>
@@ -2532,87 +2579,134 @@
       }
     }
 
-    // 3. Signature Club USPs Tab Selector & Scroll Scrub Engine
+    // 3. Signature Club USPs (8 Interactive Pillars with Regarding Visuals)
     const uspData = [
       {
         badge: 'PILLAR 01 • ARENAS',
         title: '18 Championship Arenas',
-        desc: '100% climate-controlled at constant 21°C with 12mm acoustic panoramic glass and zero dead-spots.',
+        tag: 'DUBAI & AD',
+        desc: '100% climate-controlled at constant 21°C with 12mm acoustic panoramic glass and zero dead-spots across Dubai & Abu Dhabi.',
         stat1Label: 'INDOOR CLIMATE',
         stat1Val: '21°C Constant',
         stat2Label: 'GLASS SPECS',
-        stat2Val: '12mm Acoustic WPT'
+        stat2Val: '12mm Acoustic WPT',
+        image: 'public/assets/courts/Abu%20dhabi%20Padel%20AE/abu_dhabi_court_portrait.png'
       },
       {
         badge: 'PILLAR 02 • MASTER ACADEMY',
         title: 'European Master Coaching',
-        desc: 'Elite Spanish & Portuguese certified head coaches André Lerias, Álvaro Dotras, and Enric Arauz delivering biometric match tactics and junior progression.',
+        tag: 'HEAD COACHES',
+        desc: 'Elite Spanish & Portuguese certified head coaches André Lerias, Álvaro Dotras, and Enric Arauz delivering biometric match tactics.',
         stat1Label: 'COACHING ROSTER',
         stat1Val: '5 Master Coaches',
         stat2Label: 'VIDEO BIOMETRICS',
-        stat2Val: 'Included'
+        stat2Val: 'Included',
+        image: 'public/assets/coaching/Coaches/andre_lerias.jpg'
       },
       {
         badge: 'PILLAR 03 • THE BANDEJA CAFÉ',
         title: 'The Bandeja Café & Clubhouse',
-        desc: 'Artisanal single-origin espresso, recovery protein shakes, healthy bowls, and a spectator lounge overlooking championship court matches.',
+        tag: 'ARTISANAL',
+        desc: 'Artisanal single-origin espresso, recovery protein smoothies, healthy grain bowls, and a social spectator lounge overlooking championship play.',
         stat1Label: 'BARISTA SERVICE',
         stat1Val: 'Specialty Roast',
         stat2Label: 'NUTRITION',
-        stat2Val: 'Recovery Bar'
+        stat2Val: 'Recovery Bar',
+        image: 'public/assets/courts/Abu%20dhabi%20Padel%20AE/abu%20dhabi%20padel%20ae%20coffe%20shop.png'
       },
       {
         badge: 'PILLAR 04 • PRO BOUTIQUES',
         title: 'Padel Life & Sports Life Shops',
-        desc: 'Official boutique pro shops featuring current-season Head, Bullpadel, and Nox rackets, custom stringing, demo trials, grips, and technical match gear.',
+        tag: 'BOUTIQUES',
+        desc: 'Official pro shops featuring current-season Bullpadel, Head, and Nox rackets with precision weight customization and demo trials.',
         stat1Label: 'DEMO TRIALS',
         stat1Val: 'Complimentary',
         stat2Label: 'GEAR BRANDS',
-        stat2Val: 'Head • Bullpadel • Nox'
+        stat2Val: 'Head • Bullpadel • Nox',
+        image: 'public/assets/courts/Dubai%20Padel%20Ae/sports_shop_padel_life.png'
       },
       {
         badge: 'PILLAR 05 • TOURNAMENTS & LEAGUES',
         title: 'Tournaments & Arena Buyouts',
-        desc: 'Sanctioned UAE Padel Association tournaments, weekly Americano and Mexicano social brackets, corporate buyout events, and competitive leagues.',
+        tag: 'RANKED',
+        desc: 'Sanctioned UAE Padel Association tournaments, weekly Americano and Mexicano social brackets, corporate team buyouts, and ranked leagues.',
         stat1Label: 'WEEKLY EVENTS',
         stat1Val: 'Americano & Leagues',
         stat2Label: 'SANCTIONED',
-        stat2Val: 'UAEPA Recognized'
+        stat2Val: 'UAEPA Recognized',
+        image: 'public/assets/reviews/review_screenshot_01.png'
       },
       {
         badge: 'PILLAR 06 • 7-STAR HOSPITALITY',
-        title: '7-Star Valet & Hospitality',
-        desc: 'Dedicated doorstep valet drop-off, luxury marble locker suites, sightline-protected private ladies training wing, and dedicated concierge court booking service.',
+        title: '7-Star Valet & VIP Hospitality',
+        tag: 'CONCIERGE',
+        desc: 'Dedicated doorstep valet drop-off, luxury marble locker suites, plush lounge sanctuary, and dedicated match concierge service.',
         stat1Label: 'VALET PARKING',
         stat1Val: 'Complimentary',
-        stat2Label: 'PRIVACY',
-        stat2Val: 'Ladies Sightline Wing'
+        stat2Label: 'CONCIERGE',
+        stat2Val: 'VIP Match Host',
+        image: 'public/assets/courts/Abu%20dhabi%20Padel%20AE/Padel%20Ae%20interior%20frontdesk.png'
+      },
+      {
+        badge: 'PILLAR 07 • LADIES SANCTUARY',
+        title: 'Ladies Private Sightline Sanctuary',
+        tag: '100% PRIVACY',
+        desc: 'Dedicated sightline-shielded private training wing with 100% visual privacy, exclusive locker amenities, and certified female coaches.',
+        stat1Label: 'PRIVACY WING',
+        stat1Val: '100% Sightline Shield',
+        stat2Label: 'FEMALE COACHES',
+        stat2Val: 'Private Training',
+        image: 'public/assets/courts/Abu%20dhabi%20Padel%20AE/padel_ae_interior_quote.png'
+      },
+      {
+        badge: 'PILLAR 08 • JUNIOR ACADEMY',
+        title: 'Junior Academy & Youth Development',
+        tag: 'YOUTH DEV',
+        desc: 'Biometric athletic progression for junior players aged 6–16, developing hand-eye coordination, match temperament, and tournament readiness.',
+        stat1Label: 'AGE GROUPS',
+        stat1Val: 'Ages 6 to 16',
+        stat2Label: 'METHODOLOGY',
+        stat2Val: 'European Progression',
+        image: 'public/assets/coaching/Coaches/sol_perez.jpg'
       }
     ];
 
     let currentUspIndex = 0;
 
     function selectClubUsp(idx) {
+      if (idx < 0 || idx >= uspData.length) return;
       currentUspIndex = idx;
-      for (let i = 0; i < 6; i++) {
+
+      // Update Desktop tabs
+      for (let i = 0; i < 8; i++) {
         const tab = document.getElementById('usp-tab-' + i);
         if (tab) {
-          const badge = tab.querySelector('div');
-          const title = tab.querySelector('h4');
-          const p = tab.querySelector('p');
-          const tag = tab.querySelector('span');
+          const badge = tab.querySelector('.usp-num-badge');
+          const title = tab.querySelector('.usp-title');
+          const p = tab.querySelector('.usp-desc');
+          const tag = tab.querySelector('.usp-tag');
           if (i === idx) {
             tab.className = 'usp-tab-active cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#EBE1CF] bg-[#EBE1CF] text-[#0A4834] transition-all duration-300 group flex items-start space-x-3 shadow-lg';
-            if (badge) badge.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0';
-            if (title) title.className = 'text-xs sm:text-sm font-bold text-[#0A4834] transition-colors truncate';
-            if (p) p.className = 'text-[11px] sm:text-xs text-[#0A4834]/80 mt-0.5 font-normal line-clamp-2';
-            if (tag) tag.className = 'text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0';
+            if (badge) badge.className = 'usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0';
+            if (title) title.className = 'usp-title text-xs sm:text-sm font-bold text-[#0A4834] transition-colors truncate';
+            if (p) p.className = 'usp-desc text-[11px] sm:text-xs text-[#0A4834]/80 mt-0.5 font-normal line-clamp-1';
+            if (tag) tag.className = 'usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0';
           } else {
             tab.className = 'cursor-pointer p-3 sm:p-3.5 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F]/90 text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3';
-            if (badge) badge.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0';
-            if (title) title.className = 'text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate';
-            if (p) p.className = 'text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-2';
-            if (tag) tag.className = 'text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0';
+            if (badge) badge.className = 'usp-num-badge w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-xs sm:text-sm shrink-0';
+            if (title) title.className = 'usp-title text-xs sm:text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors truncate';
+            if (p) p.className = 'usp-desc text-[11px] sm:text-xs text-[#EBE1CF]/70 mt-0.5 font-light line-clamp-1';
+            if (tag) tag.className = 'usp-tag text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase ml-2 shrink-0';
+          }
+        }
+
+        // Update Mobile pill buttons
+        const mobPill = document.getElementById('usp-mob-pill-' + i);
+        if (mobPill) {
+          if (i === idx) {
+            mobPill.className = 'shrink-0 px-3.5 py-2 rounded-xl bg-[#EBE1CF] text-[#0A4834] font-bold text-xs border border-[#EBE1CF] shadow-md transition-all flex items-center space-x-1.5';
+          } else {
+            mobPill.className = 'shrink-0 px-3.5 py-2 rounded-xl bg-[#062B1F] text-[#EBE1CF] font-medium text-xs border border-[#8F7151]/40 hover:bg-[#0A4834] transition-all flex items-center space-x-1.5';
           }
         }
       }
@@ -2624,14 +2718,22 @@
       const tEl = document.getElementById('usp-stage-title');
       const dEl = document.getElementById('usp-stage-desc');
       const sEl = document.getElementById('usp-stage-stats');
-      const stepEl = document.getElementById('usp-scroll-step-label');
+      const imgEl = document.getElementById('usp-stage-image');
+      const counterEl = document.getElementById('usp-active-pill-counter');
       const fillEl = document.getElementById('usp-scroll-progress-fill');
 
+      if (counterEl) counterEl.innerHTML = '0' + (idx + 1) + ' <span class="text-[#8F7151] font-normal">/ 08</span>';
+      if (fillEl) fillEl.style.width = (((idx + 1) / 8) * 100) + '%';
       if (bEl) bEl.textContent = data.badge;
       if (tEl) tEl.textContent = data.title;
       if (dEl) dEl.textContent = data.desc;
-      if (stepEl) stepEl.innerHTML = '0' + (idx + 1) + ' <span class="text-[#8F7151] font-normal">/ 06</span>';
-      if (fillEl) fillEl.style.width = ((idx + 1) / 6 * 100) + '%';
+      if (imgEl && data.image) {
+        imgEl.style.opacity = '0';
+        setTimeout(() => {
+          imgEl.src = data.image;
+          imgEl.style.opacity = '1';
+        }, 150);
+      }
       if (sEl) {
         sEl.innerHTML = 
           '<div class="p-2.5 sm:p-3 rounded-xl bg-[#062B1F]/90 border border-[#8F7151]/30 backdrop-blur-sm">' +
@@ -2642,101 +2744,6 @@
             '<span class="text-[9px] sm:text-[10px] font-mono text-[#8F7151] uppercase block">' + data.stat2Label + '</span>' +
             '<span class="text-sm sm:text-base font-bold text-white">' + data.stat2Val + '</span>' +
           '</div>';
-      }
-    }
-
-    // Pinned Scroll Scrubbing + Word-to-Word Community Reveal
-    function updateUspScroll() {
-      const container = document.getElementById('club-usps');
-      const showcaseView = document.getElementById('usp-showcase-view');
-      const communityView = document.getElementById('usp-community-view');
-      if (!container || !showcaseView || !communityView) return;
-
-      const rect = container.getBoundingClientRect();
-      const maxScroll = container.offsetHeight - window.innerHeight;
-      if (maxScroll <= 0) return;
-
-      const rawProgress = -rect.top / maxScroll;
-      const progress = Math.min(1, Math.max(0, rawProgress));
-
-      const communityWords = document.querySelectorAll('.community-word');
-      const communityBadge = document.getElementById('community-badge');
-      const communitySubtext = document.getElementById('community-subtext');
-
-      // Phase 1: 0.00 to 0.65 -> Scrub 6 Pillars
-      if (progress <= 0.65) {
-        showcaseView.style.opacity = '1';
-        showcaseView.style.transform = 'translateY(0px) scale(1)';
-        showcaseView.style.pointerEvents = 'auto';
-
-        communityView.style.opacity = '0';
-        communityView.style.pointerEvents = 'none';
-
-        const pillarProgress = progress / 0.65;
-        const targetIndex = Math.min(5, Math.floor(pillarProgress * 6));
-        if (targetIndex !== currentUspIndex) {
-          selectClubUsp(targetIndex);
-        }
-      } 
-      // Phase 2: 0.65 to 0.74 -> Cross-fade into pure green canvas
-      else if (progress <= 0.74) {
-        const fadeP = (progress - 0.65) / 0.09;
-        showcaseView.style.opacity = String(Math.max(0, 1 - fadeP * 1.4));
-        showcaseView.style.transform = `scale(${1 - fadeP * 0.04})`;
-        showcaseView.style.pointerEvents = 'none';
-
-        communityView.style.opacity = String(Math.min(1, fadeP * 1.4));
-        communityView.style.pointerEvents = 'none';
-
-        communityWords.forEach(w => {
-          w.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
-          w.classList.add('opacity-15', 'translate-y-4', 'scale-95');
-        });
-        if (communityBadge) {
-          communityBadge.classList.remove('opacity-100', 'translate-y-0');
-          communityBadge.classList.add('opacity-0', 'translate-y-3');
-        }
-        if (communitySubtext) {
-          communitySubtext.classList.remove('opacity-100', 'translate-y-0');
-          communitySubtext.classList.add('opacity-0', 'translate-y-3');
-        }
-      } 
-      // Phase 3: 0.74 to 1.00 -> Word-to-word reveal of "More than a court, it's a community."
-      else {
-        showcaseView.style.opacity = '0';
-        showcaseView.style.pointerEvents = 'none';
-
-        communityView.style.opacity = '1';
-        communityView.style.pointerEvents = 'auto';
-
-        if (communityBadge) {
-          communityBadge.classList.add('opacity-100', 'translate-y-0');
-          communityBadge.classList.remove('opacity-0', 'translate-y-3');
-        }
-
-        const wordProgress = (progress - 0.74) / 0.22;
-        const totalWords = communityWords.length;
-
-        communityWords.forEach((wordEl, idx) => {
-          const threshold = idx / totalWords;
-          if (wordProgress >= threshold) {
-            wordEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
-            wordEl.classList.remove('opacity-15', 'translate-y-4', 'scale-95');
-          } else {
-            wordEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
-            wordEl.classList.add('opacity-15', 'translate-y-4', 'scale-95');
-          }
-        });
-
-        if (communitySubtext) {
-          if (wordProgress >= 0.85) {
-            communitySubtext.classList.add('opacity-100', 'translate-y-0');
-            communitySubtext.classList.remove('opacity-0', 'translate-y-3');
-          } else {
-            communitySubtext.classList.remove('opacity-100', 'translate-y-0');
-            communitySubtext.classList.add('opacity-0', 'translate-y-3');
-          }
-        }
       }
     }
 
@@ -2753,6 +2760,26 @@
 
     // Initialize all video click handlers & observers on load
     document.addEventListener('DOMContentLoaded', () => {
+      // Auto-play hero video immediately on desktop and mobile
+      const heroVid = document.getElementById('hero-video-player');
+      if (heroVid) {
+        heroVid.muted = true;
+        const playPromise = heroVid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const unlockAutoplay = () => {
+              heroVid.play().catch(() => {});
+              window.removeEventListener('touchstart', unlockAutoplay);
+              window.removeEventListener('click', unlockAutoplay);
+              window.removeEventListener('scroll', unlockAutoplay);
+            };
+            window.addEventListener('touchstart', unlockAutoplay, { once: true, passive: true });
+            window.addEventListener('click', unlockAutoplay, { once: true, passive: true });
+            window.addEventListener('scroll', unlockAutoplay, { once: true, passive: true });
+          });
+        }
+      }
+
       document.querySelectorAll('video').forEach(vid => {
         vid.style.cursor = 'pointer';
         vid.addEventListener('click', (e) => {
@@ -2779,16 +2806,8 @@
         });
       }
 
-      window.addEventListener('scroll', () => {
-        requestAnimationFrame(updateUspScroll);
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        requestAnimationFrame(updateUspScroll);
-      }, { passive: true });
-
-      // Trigger initial scroll calculation
-      updateUspScroll();
+      // Initialize Pillar 01 as active
+      selectClubUsp(0);
       updateAllAudioPills();
     });
 

@@ -1,0 +1,2408 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PADELAE | Raise Your Game, Master Your Skills • Abu Dhabi & Dubai</title>
+  <meta name="description" content="UAE's premier luxury indoor padel club. 18 championship air-conditioned courts, European master coaches, The Bandeja Café, Pro Padel Shops, and private ladies sanctuary.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              darkGreen: '#0A4834',
+              forestDark: '#062B1F',
+              gold: '#8F7151',
+              goldLight: '#A68868',
+              cream: '#EBE1CF',
+              creamLight: '#F7F3EB',
+              creamCard: '#F0E8D9',
+              black: '#000000',
+              white: '#FFFFFF',
+              whatsapp: '#25D366'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      position: relative;
+      background-color: #0A4834;
+      color: #000000;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A4834; }
+    ::-webkit-scrollbar-thumb { background: #8F7151; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #EBE1CF; }
+
+    /* Interactive Mouse Spotlight Follower (Gold / Emerald Glow) */
+    #cursor-reactive-glow {
+      pointer-events: none;
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(143,113,81,0.18) 0%, rgba(10,72,52,0.12) 40%, transparent 70%);
+      z-index: 35;
+      transition: transform 0.08s ease-out;
+      will-change: left, top;
+    }
+
+    /* 3D tilt card physics */
+    .tilt-card {
+      transition: transform 0.18s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .tilt-card:hover {
+      box-shadow: 0 24px 48px -12px rgba(10, 72, 52, 0.22), 0 0 25px rgba(143, 113, 81, 0.2);
+    }
+
+    /* Continuous live strip marquee (left-to-right infinite loop) */
+    @keyframes marqueeStripAnimation {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-strip-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeStripAnimation 34s linear infinite;
+    }
+    /* strip continues */
+
+    /* Circular reviews loop (Zero-gap infinite marquee) */
+    @keyframes reviewsCircularLoop {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .reviews-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: reviewsCircularLoop 32s linear infinite;
+    }
+    .reviews-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Scroll reveal transitions */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered Pop-Up for Coach Cards */
+    .stagger-card {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stagger-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 3D Parallax Cutout */
+    .cutout-3d-wrapper {
+      perspective: 1200px;
+    }
+    .cutout-3d-img {
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.45));
+    }
+  
+    /* Feature strip continues running uninterrupted even when mouse hovers */
+    /* strip continues */
+
+    /* Coach Thought Box / Speech Bubble */
+    .coach-thought-bubble {
+      opacity: 0;
+      transform: translate(-50%, 8px) scale(0.85);
+      transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+    .coach-card-wrapper:hover .coach-thought-bubble {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+
+    /* Venue Card 3D Tilt perspective */
+    .venue-card-3d {
+      transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    /* USP Selector Pill Active State */
+    .usp-tab-active {
+      background-color: #EBE1CF !important;
+      border-color: #8F7151 !important;
+      color: #0A4834 !important;
+      transform: translateX(6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+  </style>
+</head>
+<body class="bg-[#0A4834] text-[#EBE1CF] antialiased selection:bg-[#8F7151] selection:text-white relative">
+
+  <!-- Interactive Mouse Cursor Spotlight Follower -->
+  <div id="cursor-reactive-glow" class="hidden md:block"></div>
+
+  <!-- Interactive 3D Background Canvas -->
+  <canvas id="bg-3d-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-20"></canvas>
+<!-- ================= GLOBAL PERSISTENT NAVBAR ================= -->
+  <header class="sticky top-0 z-40 w-full bg-[#0A4834]/95 backdrop-blur-xl border-b border-[#8F7151]/30 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <img src="public/assets/branding/Padel%20Ae%20Main%20Logo%20Colored.png" alt="Padelae Official Logo" class="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+        <div class="hidden sm:block border-l border-white/20 pl-3">
+          <span class="text-xs uppercase tracking-widest text-brand-lime font-bold block">Padelae</span>
+          <span class="text-[10px] uppercase tracking-wider text-stone-400 block -mt-0.5">Abu Dhabi • Dubai</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links with generous spacing -->
+      <nav class="hidden lg:flex items-center space-x-8 text-xs font-semibold uppercase tracking-widest text-[#EBE1CF]">
+        <a href="#booking-engine" class="hover:text-[#8F7151] transition-colors">Book Court</a>
+        <a href="#pricing-packages" class="hover:text-[#8F7151] transition-colors">Pricings & Packages</a>
+        <a href="#venues" class="hover:text-[#8F7151] transition-colors">Venues</a>
+        <a href="#coaches" class="hover:text-[#8F7151] transition-colors">Coaching</a>
+        <a href="#community" class="hover:text-[#8F7151] transition-colors">Community</a>
+        <a href="tournaments.html" class="hover:text-[#8F7151] transition-colors">Tournaments</a>
+        <a href="cafe-proshop.html" class="hover:text-[#8F7151] transition-colors">Café & Pro Shop</a>
+        <a href="#contact" class="hover:text-[#8F7151] transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right CTAs -->
+      <div class="flex items-center space-x-3">
+        <!-- Direct WhatsApp Concierge (8837866368) -->
+        <a href="https://wa.me/918837866368?text=Hello%20Padelae!%20I%20would%20like%20to%20inquire%20about%20booking%20a%20court." 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center space-x-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-brand-whatsapp/15 border border-brand-whatsapp/40 text-brand-whatsapp hover:bg-brand-whatsapp hover:text-black font-semibold text-xs transition-all duration-200">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span class="hidden sm:inline">WhatsApp</span>
+        </a>
+
+        <!-- Primary Book Button -->
+        <a href="#booking-engine" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#8F7151] text-white hover:bg-[#EBE1CF] hover:text-[#0A4834] font-extrabold text-xs uppercase tracking-wider hover:bg-brand-lime hover:shadow-[0_0_25px_rgba(200,215,48,0.4)] transition-all duration-300">
+          Book Court
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" class="lg:hidden p-2 rounded-lg text-stone-400 hover:text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Slide-out Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#0A4834] border-b border-[#8F7151]/30 px-4 pt-4 pb-6 space-y-4">
+      <a href="#booking-engine" onclick="toggleMobileMenu()" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">Court Booking</a>
+      <a href="#pricing-packages" onclick="toggleMobileMenu()" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">Pricings & Packages</a>
+      <a href="#venues" onclick="toggleMobileMenu()" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">Venues (Abu Dhabi & Dubai)</a>
+      <a href="#coaches" onclick="toggleMobileMenu()" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">Coaching Team</a>
+      <a href="#community" onclick="toggleMobileMenu()" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">Community & Reels</a>
+      <a href="tournaments.html" onclick="toggleMobileMenu()" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">Tournaments & Leagues</a>
+      <a href="cafe-proshop.html" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">The Bandeja Café & Pro Shop</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm font-semibold uppercase tracking-wider text-stone-200 hover:text-[#8F7151]">Contact Us</a>
+      <div class="pt-2 border-t border-[#8F7151]/30 flex flex-col space-y-2">
+        <a href="https://wa.me/918837866368" target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl bg-brand-whatsapp text-black font-bold text-xs">
+          WhatsApp Direct: 8837866368
+        </a>
+      </div>
+    </div>
+  </header>
+
+          <!-- ================= HERO SECTION (CLEAN CINEMATIC ZOOM WITH LOW-MID BUTTONS) ================= -->
+  <section class="relative min-h-[92vh] sm:min-h-screen flex items-end justify-center overflow-hidden pb-14 sm:pb-20">
+    <!-- Background Video: Abu Dhabi Earth-to-Location Zoom Video -->
+    <div class="absolute inset-0 z-0">
+      <video id="hero-video-player" onclick="handleVideoClick(this)" onmouseenter="handleVideoHover(this)" onmouseleave="handleVideoLeave(this)" class="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05] cursor-pointer" autoplay loop muted playsinline preload="auto" title="Click anywhere to unmute/mute">
+        <source src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Horizontal%20hero%20section%20video%20for%20Abu%20Dhabi%20Court%20starting%20from%20the%20whole%20Earth,%20then%20going%20to%20the%20specific%20location%20through%20Google%20maps%20and%20showing%20the%20interior%20of%20the%20facility%20for%20Abu%20Dhabi%20can%20be%20used%20as%20a%20hero%20section%20for%20one%20of%20the%20pages%20.mp4" type="video/mp4">
+      </video>
+      <!-- Country Club Emerald & Obsidian Subtle Vignette (Clear Center) -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A4834]/95 via-transparent to-[#0A4834]/30"></div>
+    </div>
+
+    <!-- Floating Audio Unmute Toggle Pill -->
+    <div class="absolute top-24 right-6 z-20 hidden sm:flex items-center">
+      <button id="hero-sound-toggle" onclick="toggleHeroSound()" class="flex items-center space-x-2 px-4 py-2 rounded-full bg-[#0A4834]/80 backdrop-blur-md border border-[#8F7151]/50 text-[#EBE1CF] text-xs hover:bg-[#8F7151] hover:text-white transition-all shadow-xl">
+        <span id="hero-sound-icon">🔇</span>
+        <span id="hero-sound-label" class="font-medium text-[11px] tracking-wider uppercase">Unmute Audio</span>
+      </button>
+    </div>
+
+    <!-- Low-Mid Hero Content (Keeps Upper 75% Completely Clear) -->
+    <div id="hero-delayed-content" class="relative z-10 w-full max-w-2xl px-4 text-center opacity-0 translate-y-6 pointer-events-none transition-all duration-1000 ease-out">
+      
+      <!-- Action Buttons in Low-Mid Position (Completely Clear Upper Screen) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+        <a href="#booking-engine" class="w-full sm:w-auto px-9 py-4 rounded-full bg-[#8F7151] hover:bg-[#EBE1CF] text-white hover:text-[#0A4834] font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-all duration-300 transform hover:-translate-y-0.5">
+          Reserve A Court
+        </a>
+        <a href="https://wa.me/918837866368?text=Hello%20Padelae!%20I%20would%20like%20to%20inquire%20about%20booking%20a%20court." 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="w-full sm:w-auto px-8 py-4 rounded-full bg-[#0A4834]/85 hover:bg-[#0A4834] backdrop-blur-md border-2 border-[#8F7151] text-[#EBE1CF] hover:text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 flex items-center justify-center space-x-2.5 shadow-lg">
+          <svg class="w-4 h-4 fill-[#25D366]" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span>WhatsApp (+971 54 587 2384)</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= GRAND MOTTO STATEMENT SECTION ================= -->
+  <section class="relative py-16 sm:py-24 bg-[#0A4834] border-b border-[#8F7151]/40 overflow-hidden reveal-on-scroll">
+    <!-- Ambient Gold Glow Blur Backdrop -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#8F7151]/20 via-[#EBE1CF]/15 to-[#8F7151]/20 blur-[130px] pointer-events-none rounded-full"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#062B1F] border border-[#8F7151]/50 text-[#EBE1CF] text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
+        <span class="w-2 h-2 rounded-full bg-[#8F7151] animate-ping"></span>
+        <span>The Official Motto of Padelae</span>
+      </div>
+
+      <!-- Exactly Two Lines As Requested -->
+      <h2 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display uppercase tracking-tight leading-[1.02] drop-shadow-2xl">
+        <span class="block text-white">Raise Your Game</span>
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#EBE1CF] via-[#8F7151] to-[#EBE1CF] mt-1 sm:mt-2">Master Your Skills</span>
+      </h2>
+
+      <!-- Caption Strictly in Two Lines As Requested -->
+      <div class="mt-6 text-[#EBE1CF]/90 text-sm sm:text-base md:text-lg max-w-3xl mx-auto font-normal leading-relaxed">
+        <p class="block">18 Championship Air-Conditioned Courts Across Dubai & Abu Dhabi.</p>
+        <p class="block mt-1 text-[#EBE1CF]/75 font-light">Built For Players Who Demand The Utmost Standard In Glass Bounce, Lighting, Elite Coaching & Hospitality.</p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-[#8F7151] font-semibold uppercase tracking-wider">
+        <span class="flex items-center space-x-1.5"><span>✦</span><span>Smash Hard, Win Easy</span></span>
+        <span class="hidden sm:inline text-[#EBE1CF]/30">•</span>
+        <span class="flex items-center space-x-1.5"><span>✦</span><span>Open 7:30 AM – Midnight Daily</span></span>
+        <span class="hidden sm:inline text-[#EBE1CF]/30">•</span>
+        <span class="flex items-center space-x-1.5"><span>✦</span><span>Complimentary Valet Parking</span></span>
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= LIVE MOVING FEATURE STRIP (CONTINUOUS MARQUEE WITH REAL VISUALS) ================= -->
+  <section class="bg-[#EBE1CF] border-y border-[#8F7151]/50 py-5 sm:py-6 overflow-hidden relative z-20">
+    <div class="w-full overflow-hidden">
+      <div class="marquee-strip-track space-x-4 sm:space-x-6">
+        
+        <!-- SET 1 (8 Authentic Photographic Feature Cards in Luxury Cream & Dark Green) -->
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png" alt="18 Courts" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">18 Championship Courts</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Indoor AC Arenas</span>
+          </div>
+        </div>
+
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Dubai%20Padel%20Ae/Ppadel%20AE%20outside%20view%20high%20Aesthetic%20horizontal.png" alt="Valet Parking" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Valet Parking</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Complimentary At Door</span>
+          </div>
+        </div>
+
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Dubai%20Padel%20Ae/Coffe%20shop%20in%20padel%20Ae.png" alt="The Bandeja Cafe" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">The Bandeja Café</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Specialty Coffee & Lounge</span>
+          </div>
+        </div>
+
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Padel%20Ae%20interior%20,%20good%20quote%20%22%20Smash%20Hard%20,win%20easy%22%20can%20use%20this%20quote%20as%20facility%20motto%20.png" alt="Ladies Sanctuary" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Ladies Sanctuary</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">100% Private Sightlines</span>
+          </div>
+        </div>
+
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/abu%20dhabi%20padel%20ae%20sport%20shop%20named%20%22sports%20life%22.png" alt="Pro Padel Shop" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Pro Padel Shops</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Padel Life & Sports Life</span>
+          </div>
+        </div>
+
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png" alt="Abu Dhabi Arena" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Abu Dhabi Musaffah</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Flagship Arena</span>
+          </div>
+        </div>
+
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/coaching/Coaches/Andre%CC%81%20Lerias%20(Padelae%20Dubai).jpg" alt="Elite Coaches" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Top-Notch Coaches</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">European Master Academy</span>
+          </div>
+        </div>
+
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Padel%20Ae%20interior%20frontdesk.png" alt="Front Desk" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Open 365 Days</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">7:30 AM to 12:00 AM</span>
+          </div>
+        </div>
+
+        <!-- SET 2 (EXACT DUPLICATE FOR CONTINUOUS INFINITE CIRCULAR LOOP) -->
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png" alt="18 Courts" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">18 Championship Courts</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Indoor AC Arenas</span>
+          </div>
+        </div>
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Dubai%20Padel%20Ae/Ppadel%20AE%20outside%20view%20high%20Aesthetic%20horizontal.png" alt="Valet Parking" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Valet Parking</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Complimentary At Door</span>
+          </div>
+        </div>
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Dubai%20Padel%20Ae/Coffe%20shop%20in%20padel%20Ae.png" alt="The Bandeja Cafe" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">The Bandeja Café</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Specialty Coffee & Lounge</span>
+          </div>
+        </div>
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Padel%20Ae%20interior%20,%20good%20quote%20%22%20Smash%20Hard%20,win%20easy%22%20can%20use%20this%20quote%20as%20facility%20motto%20.png" alt="Ladies Sanctuary" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Ladies Sanctuary</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">100% Private Sightlines</span>
+          </div>
+        </div>
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/abu%20dhabi%20padel%20ae%20sport%20shop%20named%20%22sports%20life%22.png" alt="Pro Padel Shop" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Pro Padel Shops</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Padel Life & Sports Life</span>
+          </div>
+        </div>
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png" alt="Abu Dhabi Arena" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Abu Dhabi Musaffah</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">Flagship Arena</span>
+          </div>
+        </div>
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/coaching/Coaches/Andre%CC%81%20Lerias%20(Padelae%20Dubai).jpg" alt="Elite Coaches" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Top-Notch Coaches</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">European Master Academy</span>
+          </div>
+        </div>
+        <div class="tilt-card flex items-center space-x-3.5 px-4 py-2.5 rounded-2xl bg-white border border-[#8F7151]/40 shrink-0 shadow-md hover:border-[#0A4834] transition-all">
+          <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Padel%20Ae%20interior%20frontdesk.png" alt="Front Desk" class="w-12 h-10 rounded-xl object-cover border border-black/10">
+          <div class="text-left">
+            <span class="text-sm font-bold text-[#0A4834] block">Open 365 Days</span>
+            <span class="text-[11px] font-semibold uppercase text-[#8F7151] block">7:30 AM to 12:00 AM</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ================= SECTION 2: INTERACTIVE COURT BOOKING ENGINE (LUXURY SANDSTONE & BESPOKE CALENDAR) ================= -->
+  <section id="booking-engine" class="py-16 sm:py-24 bg-[#F7F3EB] text-[#0A4834] relative border-b border-[#8F7151]/40 overflow-hidden reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <div class="inline-flex items-center space-x-1.5 px-3.5 py-1 rounded-full bg-[#0A4834]/10 border border-[#0A4834]/40 text-[#0A4834] text-xs font-black uppercase tracking-wider mb-3 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-[#8F7151] animate-ping"></span>
+          <span>Live Arena Availability</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black font-display uppercase text-[#0A4834] tracking-tight">
+          Reserve Your Court Slot
+        </h2>
+        <p class="mt-2 text-[#635345] text-sm sm:text-base font-normal">
+          Select your arena location, pick match date, customize timing, and reserve instantly via WhatsApp.
+        </p>
+      </div>
+
+      <!-- Main Booking Console -->
+      <div class="bg-white rounded-3xl border-2 border-[#8F7151]/30 p-6 sm:p-10 shadow-[0_20px_70px_rgba(10,72,52,0.08)] max-w-5xl mx-auto relative z-10">
+        
+        <!-- Step 1: Visual Venue Selector with 3D Pop-Out (Abu Dhabi First, Dubai Second) -->
+        <div class="mb-8">
+          <label class="text-xs font-black uppercase tracking-wider text-[#0A4834] block mb-3">1. Select Arena Location:</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Abu Dhabi (FIRST) -->
+            <div onclick="setBookingVenue('Abu Dhabi (Musaffah)', 6)" id="b-venue-ad" class="tilt-card cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-[#EBE1CF]/40 text-left transition-all flex items-center space-x-4 shadow-md group relative">
+              <div class="w-24 h-18 rounded-xl overflow-hidden shrink-0 bg-stone-900 border border-black/10">
+                <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png" alt="Abu Dhabi Arena" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center space-x-2">
+                  <span class="text-base font-extrabold text-[#0A4834]">Abu Dhabi (Musaffah)</span>
+                  <span id="ad-check" class="text-xs bg-[#0A4834] text-white font-bold px-1.5 py-0.5 rounded-full">✓</span>
+                </div>
+                <span class="text-[11px] text-[#635345] font-semibold block mt-0.5">Flagship Arena • Championship Indoor AC Courts</span>
+                <span class="text-[10px] text-[#8F7151] font-black uppercase tracking-wider block mt-1">Available 7:30 AM – Midnight</span>
+              </div>
+            </div>
+
+            <!-- Dubai (SECOND) -->
+            <div onclick="setBookingVenue('Dubai (Al Quoz)', 18)" id="b-venue-dubai" class="tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-white text-left transition-all flex items-center space-x-4 hover:border-[#8F7151] group relative">
+              <div class="w-24 h-18 rounded-xl overflow-hidden shrink-0 bg-stone-900 border border-black/10">
+                <img src="public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png" alt="Dubai Court" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center space-x-2">
+                  <span class="text-base font-extrabold text-[#0A4834]">Dubai (Al Quoz)</span>
+                  <span id="dubai-check" class="text-xs bg-[#0A4834] text-white font-bold px-1.5 py-0.5 rounded-full hidden">✓</span>
+                </div>
+                <span class="text-[11px] text-[#635345] font-semibold block mt-0.5">18 Championship Courts • Valet & The Bandeja Café</span>
+                <span class="text-[10px] text-[#8F7151] font-black uppercase tracking-wider block mt-1">Available 7:30 AM – Midnight</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Step 2: Bespoke Luxury Date Selector UI (Bespoke Calendar Dropdown / Modal) -->
+        <div class="mb-8 relative">
+          <label class="text-xs font-black uppercase tracking-wider text-[#0A4834] block mb-2">2. Match Date (Select Day):</label>
+          <div onclick="toggleLuxuryCalendar()" class="cursor-pointer relative flex items-center justify-between p-4 rounded-2xl bg-[#F7F3EB] border-2 border-[#8F7151]/40 hover:border-[#0A4834] transition-all group shadow-sm">
+            <div class="flex items-center space-x-3.5">
+              <div class="w-11 h-11 rounded-xl bg-[#0A4834] text-[#EBE1CF] flex items-center justify-center font-black text-lg">
+                📅
+              </div>
+              <div>
+                <span class="text-[11px] text-[#8F7151] font-bold uppercase tracking-wider block">Selected Match Date</span>
+                <span id="display-selected-date" class="text-base sm:text-lg font-black text-[#0A4834] font-display">Sunday, Nov 8, 2026</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="hidden sm:inline-block px-3 py-1 rounded-full bg-[#EBE1CF] text-[#0A4834] text-xs font-bold">Change Date</span>
+              <span class="text-xs font-black text-[#8F7151] group-hover:translate-y-0.5 transition-transform">▼</span>
+            </div>
+          </div>
+
+          <!-- Bespoke Luxury Calendar Dropdown Box (Replaces Old-School Browser Popup) -->
+          <div id="luxury-calendar-dropdown" class="hidden absolute top-full left-0 right-0 z-30 mt-2 p-5 bg-white rounded-3xl border-2 border-[#8F7151] shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-all">
+            <div class="flex items-center justify-between pb-3 border-b border-stone-200 mb-3">
+              <button type="button" onclick="changeCalendarMonth(-1)" class="p-2 rounded-xl hover:bg-[#EBE1CF] text-[#0A4834] font-bold">&larr; Prev</button>
+              <span id="cal-month-year" class="font-extrabold text-[#0A4834] text-base">November 2026</span>
+              <button type="button" onclick="changeCalendarMonth(1)" class="p-2 rounded-xl hover:bg-[#EBE1CF] text-[#0A4834] font-bold">Next &rarr;</button>
+            </div>
+            
+            <!-- Quick Date Shortcut Pills -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button type="button" onclick="selectQuickDate(0)" class="px-3 py-1 rounded-full bg-[#EBE1CF] text-[#0A4834] font-bold text-xs hover:bg-[#0A4834] hover:text-white transition-all">Today</button>
+              <button type="button" onclick="selectQuickDate(1)" class="px-3 py-1 rounded-full bg-[#EBE1CF] text-[#0A4834] font-bold text-xs hover:bg-[#0A4834] hover:text-white transition-all">Tomorrow</button>
+              <button type="button" onclick="selectQuickDate(6)" class="px-3 py-1 rounded-full bg-[#EBE1CF] text-[#0A4834] font-bold text-xs hover:bg-[#0A4834] hover:text-white transition-all">This Saturday</button>
+              <button type="button" onclick="selectQuickDate(7)" class="px-3 py-1 rounded-full bg-[#EBE1CF] text-[#0A4834] font-bold text-xs hover:bg-[#0A4834] hover:text-white transition-all">This Sunday</button>
+            </div>
+
+            <!-- Calendar Days Grid -->
+            <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-[#8F7151] mb-2">
+              <div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div><div>Su</div>
+            </div>
+            <div id="cal-days-grid" class="grid grid-cols-7 gap-1.5 text-center">
+              <!-- Dynamically generated days -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Preferred Time Slot Grid -->
+        <div class="mb-8">
+          <div class="flex items-center justify-between mb-3">
+            <label class="text-xs font-black uppercase tracking-wider text-[#0A4834]">3. Select Preferred Time Slot:</label>
+            <span class="text-[11px] font-bold text-[#0A4834] bg-[#EBE1CF] px-3 py-0.5 rounded-full">Indoor Air-Conditioned 21°C</span>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Morning -->
+            <div>
+              <span class="text-[10px] font-extrabold uppercase text-[#8F7151] tracking-wider block mb-1.5">☀️ Morning Sessions</span>
+              <div class="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                <button type="button" onclick="setBookingTime('07:30 AM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">07:30 AM</button>
+                <button type="button" onclick="setBookingTime('08:30 AM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">08:30 AM</button>
+                <button type="button" onclick="setBookingTime('09:30 AM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">09:30 AM</button>
+                <button type="button" onclick="setBookingTime('10:30 AM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">10:30 AM</button>
+                <button type="button" onclick="setBookingTime('11:30 AM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">11:30 AM</button>
+              </div>
+            </div>
+
+            <!-- Afternoon -->
+            <div>
+              <span class="text-[10px] font-extrabold uppercase text-[#8F7151] tracking-wider block mb-1.5">🌤️ Afternoon Sessions</span>
+              <div class="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                <button type="button" onclick="setBookingTime('12:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">12:30 PM</button>
+                <button type="button" onclick="setBookingTime('02:00 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">02:00 PM</button>
+                <button type="button" onclick="setBookingTime('03:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">03:30 PM</button>
+                <button type="button" onclick="setBookingTime('04:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">04:30 PM</button>
+              </div>
+            </div>
+
+            <!-- Prime Evening -->
+            <div>
+              <span class="text-[10px] font-extrabold uppercase text-[#8F7151] tracking-wider block mb-1.5">🌙 Evening Prime Sessions</span>
+              <div class="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                <button type="button" onclick="setBookingTime('05:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">05:30 PM</button>
+                <button type="button" onclick="setBookingTime('06:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">06:30 PM</button>
+                <button type="button" onclick="setBookingTime('07:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#0A4834] border-2 border-[#8F7151] text-white shadow-md scale-105 transition-all">07:30 PM</button>
+                <button type="button" onclick="setBookingTime('08:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">08:30 PM</button>
+                <button type="button" onclick="setBookingTime('09:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">09:30 PM</button>
+                <button type="button" onclick="setBookingTime('10:30 PM')" class="time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all">10:30 PM</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Format & Duration Cards -->
+        <div class="mb-8">
+          <label class="text-xs font-black uppercase tracking-wider text-[#0A4834] block mb-3">4. Choose Match Format & Duration:</label>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            
+            <div onclick="setBookingFormat('60m_full', 300, '60 Minutes (Full Court)')" id="b-fmt-60m_full" class="fmt-card tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151] transition-all relative">
+              <span class="text-sm sm:text-base font-bold text-[#0A4834] block">60 Minutes</span>
+              <span class="text-xs text-[#635345] block mt-0.5">Full Court</span>
+              <span class="inline-block mt-3 px-3.5 py-1 rounded-full bg-[#0A4834] text-[#EBE1CF] font-black text-xs">
+                AED 300
+              </span>
+            </div>
+
+            <div onclick="setBookingFormat('90m_full', 450, '90 Minutes (Full Court)')" id="b-fmt-90m_full" class="fmt-card tilt-card cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-[#EBE1CF] text-center shadow-lg transition-all relative">
+              <span class="absolute -top-2.5 right-2 bg-[#8F7151] text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full shadow-sm">Popular</span>
+              <span class="text-sm sm:text-base font-bold text-[#0A4834] block">90 Minutes</span>
+              <span class="text-xs text-[#635345] block mt-0.5">Full Court</span>
+              <span class="inline-block mt-3 px-3.5 py-1 rounded-full bg-[#0A4834] text-white font-black text-xs">
+                AED 450
+              </span>
+            </div>
+
+            <div onclick="setBookingFormat('60m_open', 75, '60 Minutes (Open Match)')" id="b-fmt-60m_open" class="fmt-card tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151] transition-all relative">
+              <span class="text-sm sm:text-base font-bold text-[#0A4834] block">60 Minutes</span>
+              <span class="text-xs text-[#635345] block mt-0.5">Open Match</span>
+              <span class="inline-block mt-3 px-3.5 py-1 rounded-full bg-[#0A4834] text-[#EBE1CF] font-black text-xs">
+                AED 75
+              </span>
+            </div>
+
+            <div onclick="setBookingFormat('90m_open', 112.5, '90 Minutes (Open Match)')" id="b-fmt-90m_open" class="fmt-card tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151] transition-all relative">
+              <span class="text-sm sm:text-base font-bold text-[#0A4834] block">90 Minutes</span>
+              <span class="text-xs text-[#635345] block mt-0.5">Open Match</span>
+              <span class="inline-block mt-3 px-3.5 py-1 rounded-full bg-[#0A4834] text-[#EBE1CF] font-black text-xs">
+                AED 112.5
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Step 5: Coach Selection -->
+        <div class="mb-8">
+          <label class="text-xs font-black uppercase tracking-wider text-[#0A4834] block mb-2">5. Optional Coach Request / Instruction Preference:</label>
+          <div class="grid grid-cols-2 sm:grid-cols-6 gap-2">
+            <button type="button" onclick="setBookingCoach('None', 'Standard Matchplay')" class="coach-pill tilt-card p-2 rounded-xl border-2 border-[#0A4834] bg-[#EBE1CF] text-center">
+              <span class="text-xs font-bold text-[#0A4834] block">None</span>
+              <span class="text-[9px] text-[#635345] block">Match Only</span>
+            </button>
+            <button type="button" onclick="setBookingCoach('André Lerias', 'Head Coach • Dubai')" class="coach-pill tilt-card p-2 rounded-xl border border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151]">
+              <span class="text-xs font-bold text-[#0A4834] block">André Lerias</span>
+              <span class="text-[9px] text-[#8F7151] block">Dubai Center</span>
+            </button>
+            <button type="button" onclick="setBookingCoach('Álvaro Dotras', 'Technical Coach • Dubai')" class="coach-pill tilt-card p-2 rounded-xl border border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151]">
+              <span class="text-xs font-bold text-[#0A4834] block">Álvaro Dotras</span>
+              <span class="text-[9px] text-[#8F7151] block">Dubai Center</span>
+            </button>
+            <button type="button" onclick="setBookingCoach('Esther García', 'Master Coach • Dubai')" class="coach-pill tilt-card p-2 rounded-xl border border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151]">
+              <span class="text-xs font-bold text-[#0A4834] block">Esther García</span>
+              <span class="text-[9px] text-[#8F7151] block">Dubai Center</span>
+            </button>
+            <button type="button" onclick="setBookingCoach('Sol Pérez', 'Ladies Wing • Dubai')" class="coach-pill tilt-card p-2 rounded-xl border border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151]">
+              <span class="text-xs font-bold text-[#0A4834] block">Sol Pérez</span>
+              <span class="text-[9px] text-[#8F7151] block">Ladies Wing</span>
+            </button>
+            <button type="button" onclick="setBookingCoach('Enric Arauz', 'Head Coach • Abu Dhabi')" class="coach-pill tilt-card p-2 rounded-xl border border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151]">
+              <span class="text-xs font-bold text-[#0A4834] block">Enric Arauz</span>
+              <span class="text-[9px] text-[#8F7151] block">Abu Dhabi</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 6: Live Booking Summary & WhatsApp Bridge (Country Club Luxury Green Card) -->
+        <div class="bg-[#0A4834] rounded-2xl p-6 sm:p-7 text-[#EBE1CF] shadow-2xl border border-[#8F7151]/50 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-1 text-center md:text-left">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#8F7151] block">Reservation Live Summary</span>
+            <div id="b-summary-format" class="text-lg sm:text-xl font-black text-white">90 Minutes (Full Court)</div>
+            <div id="b-summary-details" class="text-xs text-[#EBE1CF]/80 font-light">Abu Dhabi (Musaffah) • Selected Date at 07:30 PM</div>
+            <div id="b-summary-coach" class="text-[11px] text-[#8F7151]">Matchplay Slot (No Coach Requested)</div>
+          </div>
+          
+          <div class="flex items-center space-x-6">
+            <div class="text-right">
+              <span class="text-[10px] uppercase tracking-wider text-[#EBE1CF]/60 block">Total Due</span>
+              <span id="b-summary-price" class="text-2xl sm:text-3xl font-black text-[#EBE1CF] font-mono">AED 450</span>
+            </div>
+            <a id="btn-final-whatsapp-booking" 
+               href="https://wa.me/918837866368" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="px-8 py-4 rounded-full bg-[#8F7151] hover:bg-[#EBE1CF] text-white hover:text-[#0A4834] font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all flex items-center space-x-2 transform hover:scale-105">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>Confirm On WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= LUXURY PRO ATHLETE BENTO SHOWCASE (SORIN SPORTS INSPIRATION WITH 3D CUTOUT) ================= -->
+  <!-- ================= SECTION 2: THE PADELAE STANDARD - SIGNATURE CLUB USPS ================= -->
+  <section id="club-usps" class="py-16 sm:py-24 bg-[#062B1F] text-[#EBE1CF] relative border-b border-[#8F7151]/40 overflow-hidden reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Headline Strictly in Two Lines -->
+      <div class="text-left mb-12 sm:mb-16 max-w-3xl">
+        <span class="text-xs uppercase tracking-widest text-[#8F7151] font-bold block mb-2">The PadelAE Standard</span>
+        <h2 class="text-3xl sm:text-5xl font-black font-display uppercase text-white leading-tight">
+          <span class="block">Signature Club USPs</span>
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#EBE1CF] via-[#8F7151] to-white">Engineered For Athletic Luxury</span>
+        </h2>
+        <p class="mt-2 text-[#EBE1CF]/80 text-sm sm:text-base font-light">
+          Six uncompromising pillars that define the UAE's premier country club padel experience.
+        </p>
+      </div>
+
+      <!-- Interactive 6-Pillar Showcase with 3D Cutout Stage -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left: 6 USP Pillar Selector Cards (Scroll & Click Interactive) -->
+        <div class="lg:col-span-5 flex flex-col space-y-3 justify-between" id="usp-tabs-list">
+          
+          <!-- Pillar 1: 18 Championship Arenas -->
+          <div onclick="selectClubUsp(0)" id="usp-tab-0" class="usp-tab-active cursor-pointer p-4 rounded-2xl border border-[#8F7151]/40 bg-[#0A4834]/80 transition-all duration-300 group flex items-start space-x-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#8F7151] text-white flex items-center justify-center font-black text-sm shrink-0">
+              01
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">18 Championship Arenas</h4>
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase">Dubai & Abu Dhabi</span>
+              </div>
+              <p class="text-xs text-[#EBE1CF]/75 mt-0.5 font-light">World Padel Tour panoramic glass, 100% climate control, and anti-glare illumination.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 2: European Master Academy -->
+          <div onclick="selectClubUsp(1)" id="usp-tab-1" class="cursor-pointer p-4 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F] text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
+              02
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">European Master Coaching</h4>
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase">Top Head Coaches</span>
+              </div>
+              <p class="text-xs text-[#EBE1CF]/75 mt-0.5 font-light">André Lerias, Álvaro Dotras, and Enric Arauz delivering biometric match tactical mastery.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 3: The Bandeja Café & Lounge -->
+          <div onclick="selectClubUsp(2)" id="usp-tab-2" class="cursor-pointer p-4 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F] text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
+              03
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">The Bandeja Café & Clubhouse</h4>
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase">Artisanal Bar</span>
+              </div>
+              <p class="text-xs text-[#EBE1CF]/75 mt-0.5 font-light">Specialty roast coffee, recovery protein shakes, and a relaxed spectator lounge.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 4: Pro Padel Boutiques -->
+          <div onclick="selectClubUsp(3)" id="usp-tab-3" class="cursor-pointer p-4 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F] text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
+              04
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">Padel Life & Sports Life Shops</h4>
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase">Official Boutiques</span>
+              </div>
+              <p class="text-xs text-[#EBE1CF]/75 mt-0.5 font-light">Official Head & Bullpadel tournament rackets, grip customization, and apparel.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 5: Tournaments & Leagues -->
+          <div onclick="selectClubUsp(4)" id="usp-tab-4" class="cursor-pointer p-4 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F] text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
+              05
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">Tournaments & Corporate Leagues</h4>
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase">Ranked Play</span>
+              </div>
+              <p class="text-xs text-[#EBE1CF]/75 mt-0.5 font-light">Weekly Americano tournaments, Red Bull collaborations, and private arena buyouts.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 6: 7-Star Valet & Country Club Hospitality -->
+          <div onclick="selectClubUsp(5)" id="usp-tab-5" class="cursor-pointer p-4 rounded-2xl border border-[#8F7151]/30 bg-[#062B1F] text-[#EBE1CF] hover:bg-[#0A4834]/60 transition-all duration-300 group flex items-start space-x-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#0A4834] border border-[#8F7151]/40 text-[#EBE1CF] flex items-center justify-center font-black text-sm shrink-0">
+              06
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">7-Star Valet & Hospitality</h4>
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase">Doorstep Service</span>
+              </div>
+              <p class="text-xs text-[#EBE1CF]/75 mt-0.5 font-light">Complimentary doorstep valet, luxury locker rooms, and ladies sightline sanctuary.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: 3D Interactive Stage with Cutouts, Dynamic Stats & Cursor Reactivity -->
+        <div class="lg:col-span-7 relative min-h-[500px] sm:min-h-[580px] rounded-3xl bg-[#0A4834] border-2 border-[#8F7151]/40 p-6 sm:p-10 flex flex-col justify-between overflow-hidden shadow-2xl cutout-3d-wrapper">
+          
+          <!-- Background Brand Monogram Watermark -->
+          <div class="absolute inset-0 opacity-15 pointer-events-none flex items-center justify-center">
+            <img src="public/assets/branding/Padel%20AE%20green%20logo.png" alt="Padelae Monogram" class="w-[420px] h-auto object-contain">
+          </div>
+
+          <!-- Dynamic USP Highlight Card -->
+          <div class="relative z-10 max-w-md">
+            <span id="usp-stage-badge" class="inline-block px-3.5 py-1 rounded-full bg-[#8F7151] text-white text-[11px] font-black uppercase tracking-wider mb-3 shadow-md">
+              01 • Championship Arenas
+            </span>
+            <h3 id="usp-stage-title" class="text-2xl sm:text-4xl font-black font-display text-white leading-tight">
+              18 World Padel Tour Arenas
+            </h3>
+            <p id="usp-stage-desc" class="text-xs sm:text-sm text-[#EBE1CF]/85 mt-2 leading-relaxed">
+              Featuring 12mm tempered acoustic panoramic glass, instant zero-deadspot shock rebound, and anti-glare high-lux LED lighting engineered for televised tournament play.
+            </p>
+
+            <!-- Quick Telemetry Specs -->
+            <div id="usp-stage-stats" class="grid grid-cols-2 gap-3 mt-6">
+              <div class="p-3 rounded-xl bg-[#062B1F]/80 border border-[#8F7151]/30">
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase block">Indoor Climate</span>
+                <span class="text-base font-bold text-white">21°C Constant</span>
+              </div>
+              <div class="p-3 rounded-xl bg-[#062B1F]/80 border border-[#8F7151]/30">
+                <span class="text-[10px] font-mono text-[#8F7151] uppercase block">Acoustic Glass</span>
+                <span class="text-base font-bold text-white">12mm Panoramic</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive 3D Cutout of World Tour Pro Martin Di Nenno (Reacts to Cursor) -->
+          <div id="cutout-3d-container" class="absolute -bottom-8 right-0 sm:right-4 w-[280px] sm:w-[380px] pointer-events-none z-20">
+            <img id="cutout-player" 
+                 src="public/assets/coaching/Martin-Di-Nenno-volee-de-revers-Madrid-P1-2023-scaled-Background-Removed-e1706706342816.png" 
+                 alt="Martin Di Nenno Volley Cutout" 
+                 class="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.8)] filter brightness-[1.03]">
+          </div>
+
+          <!-- Stage Bottom Footer: Brand Partner Badges -->
+          <div class="relative z-10 pt-6 border-t border-[#8F7151]/30 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+              <span class="text-[10px] uppercase font-bold text-[#8F7151]">Official Partners:</span>
+              <img src="public/assets/partners/Head-Logo-768x432-1.png" alt="Head Padel" class="h-4 w-auto object-contain brightness-0 invert opacity-75">
+              <img src="public/assets/partners/Mashreq-Bank_idRkzSrbkL_0-1.png" alt="Mashreq" class="h-4 w-auto object-contain brightness-0 invert opacity-75">
+            </div>
+            <a href="courts.html" class="inline-flex items-center space-x-1.5 text-xs font-bold text-[#EBE1CF] hover:text-[#8F7151] transition-colors">
+              <span>Explore Court Specifications &rarr;</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  
+  <!-- ================= SECTION 3: PRICINGS & PACKAGES (WARM LUXURY CREAM & GOLD PALETTE) ================= -->
+  <section id="pricing-packages" class="py-16 sm:py-24 bg-[#F7F3EB] text-[#0A4834] relative border-b border-[#8F7151]/40 overflow-hidden reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Headline & Subtitle in Luxury Typography -->
+      <div class="text-left mb-10 sm:mb-14 max-w-3xl">
+        <span class="text-base sm:text-lg font-semibold italic text-[#8F7151] tracking-wide block mb-1">Pricings & Packages</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black font-display uppercase text-[#0A4834] leading-tight tracking-tight">
+          Enjoy Premium Prices Or Select The<br class="hidden sm:inline"> Package That <span class="text-[#8F7151]">Suits You Best</span>
+        </h2>
+      </div>
+
+      <!-- Court Bookings Block (Unified Container with Divide Lines) -->
+      <div class="mb-10 sm:mb-14">
+        <div class="flex items-center justify-between mb-3">
+          <a href="courts.html" class="group inline-flex items-center space-x-2 text-[#0A4834] hover:text-[#8F7151] transition-colors">
+            <h3 class="text-base sm:text-lg font-normal italic text-[#0A4834] tracking-wide group-hover:text-[#8F7151] transition-colors">Court Bookings:</h3>
+            <span class="text-xs text-[#8F7151] font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-1">
+              <span>(Open Booking Page &rarr;)</span>
+            </span>
+          </a>
+          <a href="courts.html" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#8F7151] hover:text-[#0A4834] transition-colors">
+            <span>View Court Booking Page</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- 4-Column Unified Container on White Card -->
+        <div class="border-2 border-[#8F7151]/40 rounded-3xl bg-white overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#8F7151]/25 shadow-xl">
+          
+          <!-- Column 1: 60 Minutes Full Court -->
+          <div onclick="selectCourtPricingAndScroll('60m_full', 300, '60 Minutes (Full Court)')" 
+               class="tilt-card cursor-pointer p-6 sm:p-7 flex flex-col items-center justify-between text-center hover:bg-[#EBE1CF]/30 transition-all group relative">
+            <div class="space-y-1">
+              <span class="text-xl sm:text-2xl font-bold text-[#0A4834] block tracking-tight group-hover:text-[#8F7151] transition-colors">60 Minutes</span>
+              <span class="text-xs sm:text-sm italic text-[#635345] block font-normal">Full Court</span>
+            </div>
+            <div class="mt-8 w-full flex justify-center">
+              <button type="button" class="w-auto min-w-[130px] px-6 py-2 rounded-full bg-[#0A4834] text-[#EBE1CF] font-bold text-xs sm:text-sm border border-transparent group-hover:bg-[#8F7151] group-hover:text-white transition-all shadow-md">
+                AED 300
+              </button>
+            </div>
+          </div>
+
+          <!-- Column 2: 90 Minutes Full Court -->
+          <div onclick="selectCourtPricingAndScroll('90m_full', 450, '90 Minutes (Full Court)')" 
+               class="tilt-card cursor-pointer p-6 sm:p-7 flex flex-col items-center justify-between text-center hover:bg-[#EBE1CF]/30 transition-all group relative">
+            <div class="space-y-1">
+              <span class="text-xl sm:text-2xl font-bold text-[#0A4834] block tracking-tight group-hover:text-[#8F7151] transition-colors">90 Minutes</span>
+              <span class="text-xs sm:text-sm italic text-[#635345] block font-normal">Full Court</span>
+            </div>
+            <div class="mt-8 w-full flex justify-center">
+              <button type="button" class="w-auto min-w-[130px] px-6 py-2 rounded-full bg-[#0A4834] text-white font-bold text-xs sm:text-sm border border-transparent group-hover:bg-[#8F7151] transition-all shadow-md">
+                AED 450
+              </button>
+            </div>
+          </div>
+
+          <!-- Column 3: 60 Minutes Open Match -->
+          <div onclick="selectCourtPricingAndScroll('60m_open', 75, '60 Minutes (Open Match)')" 
+               class="tilt-card cursor-pointer p-6 sm:p-7 flex flex-col items-center justify-between text-center hover:bg-[#EBE1CF]/30 transition-all group relative">
+            <div class="space-y-1">
+              <span class="text-xl sm:text-2xl font-bold text-[#0A4834] block tracking-tight group-hover:text-[#8F7151] transition-colors">60 Minutes</span>
+              <span class="text-xs sm:text-sm italic text-[#635345] block font-normal">Open Match</span>
+            </div>
+            <div class="mt-8 w-full flex justify-center">
+              <button type="button" class="w-auto min-w-[130px] px-6 py-2 rounded-full bg-[#0A4834] text-[#EBE1CF] font-bold text-xs sm:text-sm border border-transparent group-hover:bg-[#8F7151] group-hover:text-white transition-all shadow-md">
+                AED 75
+              </button>
+            </div>
+          </div>
+
+          <!-- Column 4: 90 Minutes Open Match -->
+          <div onclick="selectCourtPricingAndScroll('90m_open', 112.5, '90 Minutes (Open Match)')" 
+               class="tilt-card cursor-pointer p-6 sm:p-7 flex flex-col items-center justify-between text-center hover:bg-[#EBE1CF]/30 transition-all group relative">
+            <div class="space-y-1">
+              <span class="text-xl sm:text-2xl font-bold text-[#0A4834] block tracking-tight group-hover:text-[#8F7151] transition-colors">90 Minutes</span>
+              <span class="text-xs sm:text-sm italic text-[#635345] block font-normal">Open Match</span>
+            </div>
+            <div class="mt-8 w-full flex justify-center">
+              <button type="button" class="w-auto min-w-[130px] px-6 py-2 rounded-full bg-[#0A4834] text-[#EBE1CF] font-bold text-xs sm:text-sm border border-transparent group-hover:bg-[#8F7151] group-hover:text-white transition-all shadow-md">
+                AED 112.5
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Coaching Packages Block (Fully Clickable to Academy with Presets) -->
+      <div>
+        <div class="flex items-center justify-between mb-3">
+          <a href="academy.html" class="group inline-flex items-center space-x-2 text-[#0A4834] hover:text-[#8F7151] transition-colors">
+            <h3 class="text-base sm:text-lg font-normal italic text-[#0A4834] tracking-wide group-hover:text-[#8F7151] transition-colors">Coaching Packages:</h3>
+            <span class="text-xs text-[#8F7151] font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-1">
+              <span>(Open Coaching Packages Page &rarr;)</span>
+            </span>
+          </a>
+          <a href="academy.html" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#8F7151] hover:text-[#0A4834] transition-colors">
+            <span>View Coaching Packages Page</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- 3-Column Unified Container (Every Card Clickable) -->
+        <div class="border-2 border-[#8F7151]/40 rounded-3xl bg-white overflow-hidden grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#8F7151]/25 shadow-xl">
+          
+          <!-- Column 1: Single Lesson -->
+          <div onclick="window.location.href='academy.html?pkg=single'" 
+               class="tilt-card cursor-pointer p-6 sm:p-7 flex flex-col justify-between text-center hover:bg-[#EBE1CF]/30 transition-all group relative">
+            <div class="space-y-1 mb-6">
+              <span class="text-xl sm:text-2xl font-bold text-[#0A4834] block tracking-tight group-hover:text-[#8F7151] transition-colors">Single Lesson</span>
+              <span class="text-xs sm:text-sm text-[#635345] block font-normal">60 Mins</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-auto">
+              <!-- 1 Player -->
+              <div onclick="event.stopPropagation(); window.location.href='academy.html?pkg=single&mode=1p'" 
+                   class="cursor-pointer space-y-1.5 group/sub">
+                <span class="text-xs italic text-[#635345] block group-hover/sub:text-[#0A4834] transition-colors">1 x Player</span>
+                <button type="button" class="w-full py-2 rounded-full bg-[#0A4834] text-[#EBE1CF] font-bold text-xs sm:text-sm border border-transparent group-hover/sub:bg-[#8F7151] group-hover/sub:text-white transition-all shadow">
+                  AED 320
+                </button>
+              </div>
+              <!-- 2 Players -->
+              <div onclick="event.stopPropagation(); window.location.href='academy.html?pkg=single&mode=2p'" 
+                   class="cursor-pointer space-y-1.5 group/sub">
+                <span class="text-xs italic text-[#635345] block group-hover/sub:text-[#0A4834] transition-colors">2 x Players</span>
+                <button type="button" class="w-full py-2 rounded-full bg-[#0A4834] text-white font-bold text-xs sm:text-sm border border-transparent group-hover/sub:bg-[#8F7151] transition-all shadow">
+                  AED 450
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: 5 x Lessons -->
+          <div onclick="window.location.href='academy.html?pkg=5pack'" 
+               class="tilt-card cursor-pointer p-6 sm:p-7 flex flex-col justify-between text-center hover:bg-[#EBE1CF]/30 transition-all group relative">
+            <div class="space-y-1 mb-6">
+              <span class="text-xl sm:text-2xl font-bold text-[#0A4834] block tracking-tight group-hover:text-[#8F7151] transition-colors">5 x Lessons</span>
+              <span class="text-xs sm:text-sm text-[#635345] block font-normal">60 Mins</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-auto">
+              <!-- 1 Player -->
+              <div onclick="event.stopPropagation(); window.location.href='academy.html?pkg=5pack&mode=1p'" 
+                   class="cursor-pointer space-y-1.5 group/sub">
+                <span class="text-xs italic text-[#635345] block group-hover/sub:text-[#0A4834] transition-colors">1 x Player</span>
+                <button type="button" class="w-full py-2 rounded-full bg-[#0A4834] text-[#EBE1CF] font-bold text-xs sm:text-sm border border-transparent group-hover/sub:bg-[#8F7151] group-hover/sub:text-white transition-all shadow">
+                  AED 1440
+                </button>
+              </div>
+              <!-- 2 Players -->
+              <div onclick="event.stopPropagation(); window.location.href='academy.html?pkg=5pack&mode=2p'" 
+                   class="cursor-pointer space-y-1.5 group/sub">
+                <span class="text-xs italic text-[#635345] block group-hover/sub:text-[#0A4834] transition-colors">2 x Players</span>
+                <button type="button" class="w-full py-2 rounded-full bg-[#0A4834] text-white font-bold text-xs sm:text-sm border border-transparent group-hover/sub:bg-[#8F7151] transition-all shadow">
+                  AED 2050
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: 10 x Lessons -->
+          <div onclick="window.location.href='academy.html?pkg=10pack'" 
+               class="tilt-card cursor-pointer p-6 sm:p-7 flex flex-col justify-between text-center hover:bg-[#EBE1CF]/30 transition-all group relative">
+            <div class="space-y-1 mb-6">
+              <span class="text-xl sm:text-2xl font-bold text-[#0A4834] block tracking-tight group-hover:text-[#8F7151] transition-colors">10 x Lessons</span>
+              <span class="text-xs sm:text-sm text-[#635345] block font-normal">60 Mins</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-auto">
+              <!-- 1 Player -->
+              <div onclick="event.stopPropagation(); window.location.href='academy.html?pkg=10pack&mode=1p'" 
+                   class="cursor-pointer space-y-1.5 group/sub">
+                <span class="text-xs italic text-[#635345] block group-hover/sub:text-[#0A4834] transition-colors">1 x Player</span>
+                <button type="button" class="w-full py-2 rounded-full bg-[#0A4834] text-[#EBE1CF] font-bold text-xs sm:text-sm border border-transparent group-hover/sub:bg-[#8F7151] group-hover/sub:text-white transition-all shadow">
+                  AED 2560
+                </button>
+              </div>
+              <!-- 2 Players -->
+              <div onclick="event.stopPropagation(); window.location.href='academy.html?pkg=10pack&mode=2p'" 
+                   class="cursor-pointer space-y-1.5 group/sub">
+                <span class="text-xs italic text-[#635345] block group-hover/sub:text-[#0A4834] transition-colors">2 x Players</span>
+                <button type="button" class="w-full py-2 rounded-full bg-[#0A4834] text-white font-bold text-xs sm:text-sm border border-transparent group-hover/sub:bg-[#8F7151] transition-all shadow">
+                  AED 3600
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= SECTION 4: OUR FACILITIES (LIVE AUTO-SCROLLING SHOWCASE) ================= -->
+  <section id="venues" class="py-16 sm:py-24 bg-[#EBE1CF] text-[#0A4834] relative border-b border-[#8F7151]/40 reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-widest text-[#8F7151] font-bold block mb-2">Dual Championship Venues</span>
+        <h2 class="text-3xl sm:text-5xl font-black font-display uppercase text-[#0A4834] whitespace-normal lg:whitespace-nowrap">
+          Our Facilities
+        </h2>
+        <p class="text-xs sm:text-sm text-[#635345] mt-2 font-normal">
+          Click any venue card to explore full facility specifications, or book instantly below.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        
+        <!-- Venue 1: ABU DHABI FIRST (ENTIRE CARD CLICKABLE TO venue-abudhabi.html WITH 3D TILT) -->
+        <div onclick="handleVenueCardClick(event, 'venue-abudhabi.html')" 
+             onmousemove="handleCard3DTilt(event, this)" 
+             onmouseleave="resetCard3DTilt(this)"
+             class="venue-card-3d cursor-pointer rounded-3xl bg-white border-2 border-[#8F7151]/30 overflow-hidden flex flex-col justify-between shadow-2xl hover:border-[#0A4834] group">
+          <div>
+            <!-- Auto-Scrolling Carousel Container -->
+            <div id="ad-carousel-container" class="relative aspect-video overflow-hidden bg-stone-900">
+              <div id="ad-carousel-track" class="w-full h-full relative">
+                <img id="ad-slide-img" src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png" alt="Abu Dhabi Court" class="w-full h-full object-cover transition-opacity duration-700">
+              </div>
+              
+              <div class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-[#0A4834]/90 backdrop-blur-md text-[10px] font-bold uppercase text-[#EBE1CF]">
+                Capital Arena • Musaffah
+              </div>
+
+              <!-- Live Auto-Scroll Indicator Pill -->
+              <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#8F7151]/90 backdrop-blur-md text-white text-[10px] font-bold flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                <span>Live Showcase</span>
+              </div>
+
+              <!-- Carousel Indicators -->
+              <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-20" id="ad-carousel-dots">
+                <span class="w-2 h-2 rounded-full bg-white transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-2xl font-bold font-display text-[#0A4834] group-hover:text-[#8F7151] transition-colors">Padelae Abu Dhabi (Musaffah)</h3>
+                <span class="text-xs font-mono font-bold text-[#8F7151] bg-[#8F7151]/10 px-2.5 py-1 rounded-full">6 Courts</span>
+              </div>
+              <p class="text-xs text-[#635345] leading-relaxed">
+                Musaffah Industrial Area, Abu Dhabi. Home to the "Smash Hard, Win Easy" philosophy and elite European training under Enric Arauz.
+              </p>
+              <ul class="mt-4 space-y-2 text-xs text-[#0A4834] font-medium">
+                <li class="flex items-center space-x-2">
+                  <span class="text-[#8F7151]">✔</span>
+                  <span>Climate-Controlled Panoramic Indoor Courts</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-[#8F7151]">✔</span>
+                  <span>"Sports Life" Pro Shop & Specialty Coffee Lounge</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-[#8F7151]">✔</span>
+                  <span>Open Daily from 7:30 AM to Midnight</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-7 pt-0 flex items-center justify-between border-t border-stone-200 mt-4">
+            <span class="text-xs font-bold text-[#8F7151] group-hover:underline flex items-center space-x-1">
+              <span>Explore Venue Page</span>
+              <span>&rarr;</span>
+            </span>
+            <button type="button" 
+                    onclick="event.stopPropagation(); setBookingVenue('Abu Dhabi (Musaffah)', 6); document.getElementById('booking-engine').scrollIntoView({behavior:'smooth'});" 
+                    class="px-5 py-2.5 rounded-full bg-[#0A4834] text-white font-extrabold text-xs uppercase tracking-wider hover:bg-[#8F7151] transition-all shadow-md">
+              Book Abu Dhabi
+            </button>
+          </div>
+        </div>
+
+        <!-- Venue 2: DUBAI SECOND (ENTIRE CARD CLICKABLE TO venue-dubai.html WITH 3D TILT) -->
+        <div onclick="handleVenueCardClick(event, 'venue-dubai.html')" 
+             onmousemove="handleCard3DTilt(event, this)" 
+             onmouseleave="resetCard3DTilt(this)"
+             class="venue-card-3d cursor-pointer rounded-3xl bg-white border-2 border-[#8F7151]/30 overflow-hidden flex flex-col justify-between shadow-2xl hover:border-[#0A4834] group">
+          <div>
+            <!-- Auto-Scrolling Carousel Container -->
+            <div id="dubai-carousel-container" class="relative aspect-video overflow-hidden bg-stone-900">
+              <div id="dubai-carousel-track" class="w-full h-full relative">
+                <img id="dubai-slide-img" src="public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png" alt="Dubai Court Inside" class="w-full h-full object-cover transition-opacity duration-700">
+              </div>
+
+              <div class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-[#0A4834]/90 backdrop-blur-md text-[10px] font-bold uppercase text-[#EBE1CF]">
+                Flagship Arena • 18 Courts
+              </div>
+
+              <!-- Live Auto-Scroll Indicator Pill -->
+              <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#8F7151]/90 backdrop-blur-md text-white text-[10px] font-bold flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                <span>Live Showcase</span>
+              </div>
+
+              <!-- Carousel Indicators -->
+              <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-20" id="dubai-carousel-dots">
+                <span class="w-2 h-2 rounded-full bg-white transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-white/40 transition-all"></span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-2xl font-bold font-display text-[#0A4834] group-hover:text-[#8F7151] transition-colors">Padelae Dubai (Al Quoz)</h3>
+                <span class="text-xs font-mono font-bold text-[#8F7151] bg-[#8F7151]/10 px-2.5 py-1 rounded-full">18 Courts</span>
+              </div>
+              <p class="text-xs text-[#635345] leading-relaxed">
+                Warehouse No. 701, Al Quoz Industrial Area 2, Dubai. The UAE's largest luxury indoor padel club.
+              </p>
+              <ul class="mt-4 space-y-2 text-xs text-[#0A4834] font-medium">
+                <li class="flex items-center space-x-2">
+                  <span class="text-[#8F7151]">✔</span>
+                  <span>18 Air-Conditioned Championship Courts</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-[#8F7151]">✔</span>
+                  <span>Dedicated Sightline-Protected Ladies Wing</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-[#8F7151]">✔</span>
+                  <span>The Bandeja Café & "Padel Life" Pro Shop</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="text-[#8F7151]">✔</span>
+                  <span>Doorstep Complimentary Valet Parking</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-7 pt-0 flex items-center justify-between border-t border-stone-200 mt-4">
+            <span class="text-xs font-bold text-[#8F7151] group-hover:underline flex items-center space-x-1">
+              <span>Explore Venue Page</span>
+              <span>&rarr;</span>
+            </span>
+            <button type="button" 
+                    onclick="event.stopPropagation(); setBookingVenue('Dubai (Al Quoz)', 18); document.getElementById('booking-engine').scrollIntoView({behavior:'smooth'});" 
+                    class="px-5 py-2.5 rounded-full bg-[#0A4834] text-white font-extrabold text-xs uppercase tracking-wider hover:bg-[#8F7151] transition-all shadow-md">
+              Book Dubai
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= SECTION 5: COACHES SHOWCASE (STAGGERED POP-UP & 3 REELS) ================= -->
+  <section id="coaches" class="py-16 sm:py-24 bg-[#0A4834] text-[#EBE1CF] relative border-b border-[#8F7151]/40 reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Headline Strictly in Two Lines As Instructed -->
+      <div class="text-left max-w-3xl mb-12 sm:mb-16">
+        <span class="text-sm font-semibold italic text-[#8F7151] tracking-wide block mb-1">Our Coaches</span>
+        <h2 class="text-3xl sm:text-5xl font-black font-display uppercase text-white leading-tight">
+          <span class="block">Gear Up For Greatness</span>
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#EBE1CF] via-[#8F7151] to-white">With Our Top-Notch Padel Coaches</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-[#EBE1CF]/80 mt-2 font-light">Hover over any coach to connect with their game philosophy.</p>
+      </div>
+
+      <!-- Coaches Interactive Cards Grid with Thought Boxes & Staggered Pop-Up -->
+      <div id="coaches-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-14 pt-6">
+        
+        <!-- Coach 1: André Lerias -->
+        <div onclick="window.location.href='academy.html'" 
+             class="coach-card-wrapper stagger-card tilt-card rounded-3xl bg-[#062B1F] border border-[#8F7151]/40 overflow-visible group hover:border-[#8F7151] hover:-translate-y-2 transition-all duration-300 shadow-xl relative cursor-pointer">
+          <!-- Thought Box on Hover -->
+          <div class="coach-thought-bubble absolute -top-10 left-1/2 z-40">
+            <div class="px-3 py-1.5 rounded-2xl bg-[#EBE1CF] border-2 border-[#8F7151] text-[#0A4834] font-black text-[11px] shadow-2xl whitespace-nowrap flex items-center space-x-1.5 relative">
+              <span>💬</span>
+              <span>"Hi, let's play padel!"</span>
+              <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-[#8F7151]"></div>
+            </div>
+          </div>
+          <div class="aspect-[3/4] overflow-hidden rounded-t-3xl bg-stone-900 relative">
+            <img src="public/assets/coaching/Coaches/André%20Lerias%20(Padelae%20Dubai).jpg" alt="André Lerias" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#8F7151] text-[9px] font-bold text-white uppercase">Head Coach</span>
+          </div>
+          <div class="p-4 text-center">
+            <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">André Lerias</h4>
+            <span class="text-[11px] text-[#EBE1CF]/75 font-medium block mt-0.5">Padelae Dubai</span>
+          </div>
+        </div>
+
+        <!-- Coach 2: Álvaro Dotras -->
+        <div onclick="window.location.href='academy.html'" 
+             class="coach-card-wrapper stagger-card tilt-card rounded-3xl bg-[#062B1F] border border-[#8F7151]/40 overflow-visible group hover:border-[#8F7151] hover:-translate-y-2 transition-all duration-300 shadow-xl relative cursor-pointer">
+          <!-- Thought Box on Hover -->
+          <div class="coach-thought-bubble absolute -top-10 left-1/2 z-40">
+            <div class="px-3 py-1.5 rounded-2xl bg-[#EBE1CF] border-2 border-[#8F7151] text-[#0A4834] font-black text-[11px] shadow-2xl whitespace-nowrap flex items-center space-x-1.5 relative">
+              <span>💬</span>
+              <span>"Hey, let's train!"</span>
+              <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-[#8F7151]"></div>
+            </div>
+          </div>
+          <div class="aspect-[3/4] overflow-hidden rounded-t-3xl bg-stone-900 relative">
+            <img src="public/assets/coaching/Coaches/Álvaro%20Dotras%20(Padelae%20Dubai).jpg" alt="Álvaro Dotras" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#8F7151] text-[9px] font-bold text-white uppercase">Senior Coach</span>
+          </div>
+          <div class="p-4 text-center">
+            <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">Álvaro Dotras</h4>
+            <span class="text-[11px] text-[#EBE1CF]/75 font-medium block mt-0.5">Padelae Dubai</span>
+          </div>
+        </div>
+
+        <!-- Coach 3: Esther García -->
+        <div onclick="window.location.href='academy.html'" 
+             class="coach-card-wrapper stagger-card tilt-card rounded-3xl bg-[#062B1F] border border-[#8F7151]/40 overflow-visible group hover:border-[#8F7151] hover:-translate-y-2 transition-all duration-300 shadow-xl relative cursor-pointer">
+          <!-- Thought Box on Hover -->
+          <div class="coach-thought-bubble absolute -top-10 left-1/2 z-40">
+            <div class="px-3 py-1.5 rounded-2xl bg-[#EBE1CF] border-2 border-[#8F7151] text-[#0A4834] font-black text-[11px] shadow-2xl whitespace-nowrap flex items-center space-x-1.5 relative">
+              <span>💬</span>
+              <span>"Master your vibora!"</span>
+              <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-[#8F7151]"></div>
+            </div>
+          </div>
+          <div class="aspect-[3/4] overflow-hidden rounded-t-3xl bg-stone-900 relative">
+            <img src="public/assets/coaching/Coaches/Esther%20García%20(Padelae%20Dubai).jpg" alt="Esther García" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#8F7151] text-[9px] font-bold text-white uppercase">Pro Coach</span>
+          </div>
+          <div class="p-4 text-center">
+            <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">Esther García</h4>
+            <span class="text-[11px] text-[#EBE1CF]/75 font-medium block mt-0.5">Padelae Dubai</span>
+          </div>
+        </div>
+
+        <!-- Coach 4: Sol Pérez -->
+        <div onclick="window.location.href='academy.html'" 
+             class="coach-card-wrapper stagger-card tilt-card rounded-3xl bg-[#062B1F] border border-[#8F7151]/40 overflow-visible group hover:border-[#8F7151] hover:-translate-y-2 transition-all duration-300 shadow-xl relative cursor-pointer">
+          <!-- Thought Box on Hover -->
+          <div class="coach-thought-bubble absolute -top-10 left-1/2 z-40">
+            <div class="px-3 py-1.5 rounded-2xl bg-[#EBE1CF] border-2 border-[#8F7151] text-[#0A4834] font-black text-[11px] shadow-2xl whitespace-nowrap flex items-center space-x-1.5 relative">
+              <span>💬</span>
+              <span>"Are you ready?"</span>
+              <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-[#8F7151]"></div>
+            </div>
+          </div>
+          <div class="aspect-[3/4] overflow-hidden rounded-t-3xl bg-stone-900 relative">
+            <img src="public/assets/coaching/Coaches/Sol%20Pérez%20(Padelae%20Dubai).jpg" alt="Sol Pérez" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#8F7151] text-[9px] font-bold text-white uppercase">Ladies Pro</span>
+          </div>
+          <div class="p-4 text-center">
+            <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">Sol Pérez</h4>
+            <span class="text-[11px] text-[#EBE1CF]/75 font-medium block mt-0.5">Padelae Dubai</span>
+          </div>
+        </div>
+
+        <!-- Coach 5: Enric Arauz -->
+        <div onclick="window.location.href='academy.html'" 
+             class="coach-card-wrapper stagger-card tilt-card rounded-3xl bg-[#062B1F] border border-[#8F7151]/40 overflow-visible group hover:border-[#8F7151] hover:-translate-y-2 transition-all duration-300 shadow-xl relative cursor-pointer">
+          <!-- Thought Box on Hover -->
+          <div class="coach-thought-bubble absolute -top-10 left-1/2 z-40">
+            <div class="px-3 py-1.5 rounded-2xl bg-[#EBE1CF] border-2 border-[#8F7151] text-[#0A4834] font-black text-[11px] shadow-2xl whitespace-nowrap flex items-center space-x-1.5 relative">
+              <span>💬</span>
+              <span>"Vamos! Game on!"</span>
+              <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-[#8F7151]"></div>
+            </div>
+          </div>
+          <div class="aspect-[3/4] overflow-hidden rounded-t-3xl bg-stone-900 relative">
+            <img src="public/assets/coaching/Coaches/Enric%20Arauz%20(Padelae%20Abu%20Dhabi).jpg" alt="Enric Arauz" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#8F7151] text-[9px] font-bold text-white uppercase">Head Coach</span>
+          </div>
+          <div class="p-4 text-center">
+            <h4 class="text-sm font-bold text-white group-hover:text-[#8F7151] transition-colors">Enric Arauz</h4>
+            <span class="text-[11px] text-[#EBE1CF]/75 font-medium block mt-0.5">Padelae Abu Dhabi</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Coach Video Showcase WITH 3 INTERACTIVE REELS (User Demanded 3rd Video Added) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#062B1F] rounded-3xl p-6 sm:p-8 border border-[#8F7151]/40 shadow-2xl">
+        
+        <!-- Video 1: Coaches Persona -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs uppercase tracking-wider text-[#8F7151] font-bold">Coach Culture & Banter</span>
+            <span class="text-[10px] text-[#EBE1CF]/60">Behind The Scenes</span>
+          </div>
+          <div class="relative aspect-[9/16] max-h-[420px] mx-auto rounded-2xl overflow-hidden bg-stone-900 border border-white/15 shadow-inner">
+            <video id="vid-coaches-banter" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+              <source src="public/assets/videos/Vertical%20video%20only%20containing%20the%20coaches%20in%20which%20coaches%20are%20trying%20to%20share%20their%20opinion%20which%20are%20a%20little%20bit%20sarcastic%20make%20it%20lightweight%20as%20well%20as%20getting%20familiar%20with%20all%20the%20coaches.mp4" type="video/mp4">
+            </video>
+            <button onclick="toggleVideoSound('vid-coaches-banter', 'btn-sound-coaches')" id="btn-sound-coaches" class="absolute bottom-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0A4834]/90 backdrop-blur-md border border-[#8F7151] text-[#EBE1CF] text-xs font-semibold hover:bg-[#8F7151] hover:text-white transition-all flex items-center space-x-1.5 shadow-lg">
+              <span>🔇</span><span>Unmute Sound</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Video 2: Junior Development -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs uppercase tracking-wider text-[#8F7151] font-bold">Junior Talent Academy</span>
+            <span class="text-[10px] text-[#EBE1CF]/60">Coach André Training</span>
+          </div>
+          <div class="relative aspect-[9/16] max-h-[420px] mx-auto rounded-2xl overflow-hidden bg-stone-900 border border-white/15 shadow-inner">
+            <video id="vid-juniors-training" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+              <source src="public/assets/videos/Vertical%20video%20where%20coach%20Andre%20Lerias%20is%20train%20junior%20group.%20It%20is%20a%20jolly%20environment%20and%20healthy%20to%20nurture%20where%20he%20actually%20nurturing%20the%20kids%20overall%20good%20environment%20to%20teach%20and%20learn.mp4" type="video/mp4">
+            </video>
+            <button onclick="toggleVideoSound('vid-juniors-training', 'btn-sound-juniors')" id="btn-sound-juniors" class="absolute bottom-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0A4834]/90 backdrop-blur-md border border-[#8F7151] text-[#EBE1CF] text-xs font-semibold hover:bg-[#8F7151] hover:text-white transition-all flex items-center space-x-1.5 shadow-lg">
+              <span>🔇</span><span>Unmute Sound</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Video 3: International Diversity & Environment (NEW ADDITION AS DEMANDED) -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs uppercase tracking-wider text-[#8F7151] font-bold">Community & Diversity</span>
+            <span class="text-[10px] text-[#EBE1CF]/60">40+ Nationalities</span>
+          </div>
+          <div class="relative aspect-[9/16] max-h-[420px] mx-auto rounded-2xl overflow-hidden bg-stone-900 border border-white/15 shadow-inner">
+            <video id="vid-diversity-reel" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+              <source src="public/assets/videos/Vertical%20video%20showcasing%20all%20the%20people%20saying%20Lets%20Play%20Padel%20from%20different%20different%20countries%20basically%20showing%20diversity%20and%20how%20they%20are%20all%20welcome%20at%20Padle.%20it%20showcases%20the%20community.mp4" type="video/mp4">
+            </video>
+            <button onclick="toggleVideoSound('vid-diversity-reel', 'btn-sound-diversity')" id="btn-sound-diversity" class="absolute bottom-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0A4834]/90 backdrop-blur-md border border-[#8F7151] text-[#EBE1CF] text-xs font-semibold hover:bg-[#8F7151] hover:text-white transition-all flex items-center space-x-1.5 shadow-lg">
+              <span>🔇</span><span>Unmute Sound</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="academy.html" class="inline-flex items-center space-x-2 px-9 py-4 rounded-full bg-[#8F7151] text-white font-extrabold text-xs uppercase tracking-wider hover:bg-[#EBE1CF] hover:text-[#0A4834] transition-all shadow-xl">
+          <span>View Complete Coaching Packages & Curriculum</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= SECTION 6: COMMUNITY & 9:16 INSTAGRAM REELS (LIVELY SOCIAL ENERGY) ================= -->
+  <section id="community" class="py-16 sm:py-24 bg-[#EBE1CF] text-[#0A4834] relative border-b border-[#8F7151]/40 reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-widest text-[#8F7151] font-bold block mb-2">Social Energy</span>
+        <!-- Single Line Title as explicitly instructed -->
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black font-display uppercase text-[#0A4834] whitespace-normal lg:whitespace-nowrap">
+          A Place Where Nobody Is Rushing
+        </h2>
+        <p class="text-xs sm:text-sm text-[#635345] mt-3 font-normal">
+          Calm belonging, stress release, and the meeting you never reschedule. Unmute any reel to feel the atmosphere.
+        </p>
+      </div>
+
+      <!-- 9:16 Reels Grid with Functional Sound Toggles and Pop-Up Hover Animation -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Reel 1 -->
+        <div class="tilt-card rounded-3xl bg-white border border-[#8F7151]/40 p-4 flex flex-col justify-between shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-stone-900 mb-4 relative">
+            <video id="vid-community-1" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+              <source src="public/assets/videos/A%20vertical%20video%20which%20literally%20says%20a%20place%20where%20nobody%20is%20rushing%20again%20giving%20calm%20belonging%20stress,%20release%20vibe%20it%20shows%20multiple%20age%20groups%20from%20kids%20to%20adults%20too%20old%20all%20playing%20paddle%20in%20our%20very%20jolly%20and%20lightweight%20manner.mp4" type="video/mp4">
+            </video>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[#0A4834] text-[9px] font-bold text-[#EBE1CF] uppercase">Belonging</span>
+            <button onclick="toggleVideoSound('vid-community-1', 'btn-sound-c1')" id="btn-sound-c1" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-[#0A4834]/85 backdrop-blur-md border border-[#8F7151] text-white text-[11px] hover:bg-[#8F7151] transition-all">
+              🔇 Unmute
+            </button>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-[#0A4834]">No One Is Rushing</h4>
+            <p class="text-[11px] text-[#635345] mt-1">Lightweight, multi-generational padel for kids, adults, and seniors.</p>
+          </div>
+        </div>
+
+        <!-- Reel 2 -->
+        <div class="tilt-card rounded-3xl bg-white border border-[#8F7151]/40 p-4 flex flex-col justify-between shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-stone-900 mb-4 relative">
+            <video id="vid-community-2" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+              <source src="public/assets/videos/A%20vertical%20video%20which%20shows%20stress%20relief.%20It%20literally%20says%20the%20meeting%20I%20never%20re-scheduled%20so%20it%20basically%20promotes%20a%20healthy%20or%20stress-free%20environment%20how%20pedal%20provides%20to%20the%20people%20it%20will%20be%20good%20to%20showcase%20a%20stress-free%20nurturing%20community.mp4" type="video/mp4">
+            </video>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[#0A4834] text-[9px] font-bold text-[#EBE1CF] uppercase">Stress Relief</span>
+            <button onclick="toggleVideoSound('vid-community-2', 'btn-sound-c2')" id="btn-sound-c2" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-[#0A4834]/85 backdrop-blur-md border border-[#8F7151] text-white text-[11px] hover:bg-[#8F7151] transition-all">
+              🔇 Unmute
+            </button>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-[#0A4834]">The Meeting I Never Reschedule</h4>
+            <p class="text-[11px] text-[#635345] mt-1">Promoting healthy daily fitness and mental clarity in a chilled atmosphere.</p>
+          </div>
+        </div>
+
+        <!-- Reel 3 -->
+        <div class="tilt-card rounded-3xl bg-white border border-[#8F7151]/40 p-4 flex flex-col justify-between shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-stone-900 mb-4 relative">
+            <video id="vid-community-3" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+              <source src="public/assets/videos/A%20vertical%20video%20of%20Padel%20Dubai%20shoke%20Singh%20different%20players%20fast%20space%20montages%20people%20playing%20and%20training%20showing%20the%20environment%20and%20mentality%20towards%20the%20game.mp4" type="video/mp4">
+            </video>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[#0A4834] text-[9px] font-bold text-[#EBE1CF] uppercase">Championship Energy</span>
+            <button onclick="toggleVideoSound('vid-community-3', 'btn-sound-c3')" id="btn-sound-c3" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-[#0A4834]/85 backdrop-blur-md border border-[#8F7151] text-white text-[11px] hover:bg-[#8F7151] transition-all">
+              🔇 Unmute
+            </button>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-[#0A4834]">Training & Mentality</h4>
+            <p class="text-[11px] text-[#635345] mt-1">Fast-paced montages of players elevating their tournament matchplay.</p>
+          </div>
+        </div>
+
+        <!-- Reel 4 -->
+        <div class="tilt-card rounded-3xl bg-white border border-[#8F7151]/40 p-4 flex flex-col justify-between shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-stone-900 mb-4 relative">
+            <video id="vid-community-4" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+              <source src="public/assets/videos/Vertical%20video%20capturing%20multiple%20reviews.%20All%20the%20reviews%20are%20good%20saying%20well%20marketed%20well%20managed%20good%20AC%20conditioning%20and%20the%20vibe%20in%20the%20community%20basically%20promoting%20the%20facility%20but%20from%20the%20general%20players.mp4" type="video/mp4">
+            </video>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[#0A4834] text-[9px] font-bold text-[#EBE1CF] uppercase">Player Testimonial</span>
+            <button onclick="toggleVideoSound('vid-community-4', 'btn-sound-c4')" id="btn-sound-c4" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-[#0A4834]/85 backdrop-blur-md border border-[#8F7151] text-white text-[11px] hover:bg-[#8F7151] transition-all">
+              🔇 Unmute
+            </button>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-[#0A4834]">Ice-Cold AC & Perfect Bounce</h4>
+            <p class="text-[11px] text-[#635345] mt-1">Player testimonials on court quality, lighting, and management.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= SECTION 7: VERIFIED REVIEWS & ZERO-GAP CIRCULAR MARQUEE ================= -->
+  <section class="py-16 sm:py-24 bg-[#0A4834] text-[#EBE1CF] relative overflow-hidden border-b border-[#8F7151]/40 reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div>
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="text-[#8F7151] text-lg">★★★★★</span>
+            <span class="text-sm font-bold text-white">4.8 / 5.0 Rating</span>
+            <span class="text-xs text-[#EBE1CF]/70">Verified Google Maps Reviews</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black font-display uppercase text-white whitespace-normal lg:whitespace-nowrap">
+            Player Reviews & Community Photos
+          </h2>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <span class="text-xs text-[#8F7151] font-semibold">Hover cards to pause circular marquee</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zero-Gap Infinite Marquee Track in Warm Cream Cards on Deep Country Club Green -->
+    <div class="relative w-full overflow-hidden py-4">
+      <div class="reviews-marquee-track space-x-6 px-4">
+        
+        <!-- CARD 1 -->
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/community/Review%20photo%20from%20Google%20maps%20where%20people%20taking%20group%20pic.png" alt="Omar Review" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Omar Al-Mansoor</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Verified Matchplay</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "Super clean indoor courts, the AC is ice cold even in the peak of August, and there is perfect glass bounce with zero dead spots. Truly the gold standard in the UAE."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Dubai Center</span>
+            <a href="https://maps.app.goo.gl/cqyhpfWj26VunD4P9" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/Screenshot%202026-11-08%20at%202.37.59%E2%80%AFPM.png" alt="Fatima Review Screenshot" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Fatima Al-Zahra</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Ladies Sanctuary</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "The private ladies section is unmatched in Dubai. Total privacy, beautiful locker rooms with premium amenities, and coach Sol is phenomenal."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Dubai Ladies Wing</span>
+            <a href="https://maps.app.goo.gl/2SiccjKfrxJUtM6Z8" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/review_05.jpg" alt="Marcus Review" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Marcus Vance</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Pro Academy Player</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "André Lerias and Álvaro completely revolutionized my bandeja and vibora technique. The match-making service also makes it easy to find competitive 4.0+ games."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Coaching Academy</span>
+            <a href="https://maps.app.goo.gl/obxgW6c2WicNYkPB8" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/Screenshot%202026-11-08%20at%202.40.35%E2%80%AFPM.png" alt="Rashid Review Screenshot" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Rashid Bin Thani</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Verified Match</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "18 indoor courts means booking a slot during prime time is always feasible. Valet parking makes arriving and leaving frictionless."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Dubai Flagship</span>
+            <a href="https://maps.app.goo.gl/bKebQzbufkHDH1Ux7" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/Screenshot%202026-11-08%20at%202.38.10%E2%80%AFPM.png" alt="Sarah Review Screenshot" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Sarah Jenkins</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Corporate Event Host</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "We organized a corporate tournament for 32 players here. Flawless hospitality, electronic brackets, and catering from The Bandeja café. 10/10."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Abu Dhabi Arena</span>
+            <a href="https://maps.app.goo.gl/ymm5qiJrFjKGA4np8" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <!-- SET 2 (EXACT DUPLICATE FOR CONTINUOUS ZERO-GAP LOOP) -->
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/community/Review%20photo%20from%20Google%20maps%20where%20people%20taking%20group%20pic.png" alt="Omar Review" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Omar Al-Mansoor</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Verified Matchplay</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "Super clean indoor courts, the AC is ice cold even in the peak of August, and there is perfect glass bounce with zero dead spots. Truly the gold standard in the UAE."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Dubai Center</span>
+            <a href="https://maps.app.goo.gl/cqyhpfWj26VunD4P9" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/Screenshot%202026-11-08%20at%202.37.59%E2%80%AFPM.png" alt="Fatima Review Screenshot" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Fatima Al-Zahra</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Ladies Sanctuary</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "The private ladies section is unmatched in Dubai. Total privacy, beautiful locker rooms with premium amenities, and coach Sol is phenomenal."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Dubai Ladies Wing</span>
+            <a href="https://maps.app.goo.gl/2SiccjKfrxJUtM6Z8" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/review_05.jpg" alt="Marcus Review" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Marcus Vance</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Pro Academy Player</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "André Lerias and Álvaro completely revolutionized my bandeja and vibora technique. The match-making service also makes it easy to find competitive 4.0+ games."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Coaching Academy</span>
+            <a href="https://maps.app.goo.gl/obxgW6c2WicNYkPB8" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/Screenshot%202026-11-08%20at%202.40.35%E2%80%AFPM.png" alt="Rashid Review Screenshot" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Rashid Bin Thani</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Verified Match</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "18 indoor courts means booking a slot during prime time is always feasible. Valet parking makes arriving and leaving frictionless."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Dubai Flagship</span>
+            <a href="https://maps.app.goo.gl/bKebQzbufkHDH1Ux7" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tilt-card w-[380px] sm:w-[440px] rounded-3xl bg-[#EBE1CF] text-[#0A4834] border border-[#8F7151]/40 p-6 flex flex-col justify-between shrink-0 shadow-2xl hover:border-[#8F7151] transition-all">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="public/assets/reviews/Screenshot%202026-11-08%20at%202.38.10%E2%80%AFPM.png" alt="Sarah Review Screenshot" class="w-14 h-14 rounded-2xl object-cover border border-black/10">
+              <div>
+                <div class="flex items-center space-x-1 text-[#8F7151] text-xs">★★★★★</div>
+                <div class="text-sm font-bold text-[#0A4834] mt-0.5">Sarah Jenkins</div>
+                <span class="text-[10px] text-[#8F7151] font-mono font-bold">Corporate Event Host</span>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-[#3E332A] leading-relaxed font-normal">
+              "We organized a corporate tournament for 32 players here. Flawless hospitality, electronic brackets, and catering from The Bandeja café. 10/10."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] text-[#635345]">Padelae Abu Dhabi Arena</span>
+            <a href="https://maps.app.goo.gl/ymm5qiJrFjKGA4np8" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0A4834] hover:underline font-bold">Google Maps &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<!-- ================= SECTION 8: CONTACT US FORM (SINGLE LINE TITLE) ================= -->
+  <section id="contact" class="py-16 sm:py-24 bg-[#F7F3EB] relative border-b border-[#8F7151]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-xs uppercase tracking-widest text-brand-lime font-bold block mb-2">Get In Touch</span>
+        <!-- Single Line Title as requested -->
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black font-display uppercase text-[#0A4834] whitespace-normal lg:whitespace-nowrap">
+          Let Us Know How We Can Help
+        </h2>
+        <p class="text-xs sm:text-sm text-[#635345] mt-2 font-light">
+          Inquiries for court slots, coaching academy, corporate tournament buyouts, or ladies sanctuary.
+        </p>
+      </div>
+
+      <div class="max-w-xl mx-auto bg-white rounded-3xl border border-white/15 p-6 sm:p-10 shadow-2xl">
+        <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+          <div>
+            <label for="contact-name" class="text-xs font-bold uppercase tracking-wider text-[#635345] block mb-1">Your Name</label>
+            <input type="text" id="contact-name" required placeholder="Full Name" class="w-full py-3.5 px-4 rounded-xl bg-[#F7F3EB] border border-white/20 text-xs text-[#0A4834] focus:border-brand-green focus:outline-none">
+          </div>
+          <div>
+            <label for="contact-email" class="text-xs font-bold uppercase tracking-wider text-[#635345] block mb-1">Your Email</label>
+            <input type="email" id="contact-email" required placeholder="name@domain.com" class="w-full py-3.5 px-4 rounded-xl bg-[#F7F3EB] border border-white/20 text-xs text-[#0A4834] focus:border-brand-green focus:outline-none">
+          </div>
+          <div>
+            <label for="contact-location" class="text-xs font-bold uppercase tracking-wider text-[#635345] block mb-1">Preferred Location</label>
+            <select id="contact-location" class="w-full py-3.5 px-4 rounded-xl bg-[#F7F3EB] border border-white/20 text-xs text-[#0A4834] focus:border-brand-green focus:outline-none">
+              <option value="Abu Dhabi (Musaffah)">Abu Dhabi (Musaffah)</option>
+              <option value="Dubai (Al Quoz)">Dubai (Al Quoz)</option>
+            </select>
+          </div>
+          <div>
+            <label for="contact-message" class="text-xs font-bold uppercase tracking-wider text-[#635345] block mb-1">Your Message</label>
+            <textarea id="contact-message" rows="4" required placeholder="How can our concierge team assist you?" class="w-full py-3.5 px-4 rounded-xl bg-[#F7F3EB] border border-white/20 text-xs text-[#0A4834] focus:border-brand-green focus:outline-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-4 rounded-full bg-[#8F7151] hover:bg-brand-lime text-black font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl">
+            Send Message
+          </button>
+        </form>
+
+        <div id="contact-success-msg" class="hidden mt-4 p-4 rounded-xl bg-[#8F7151]/20 border border-brand-green/40 text-center text-xs text-brand-lime font-bold">
+          Thank you! Message delivered. You can also message directly on WhatsApp: 8837866368.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= GLOBAL FOOTER ================= -->
+  <footer class="bg-[#062B1F] border-t border-[#8F7151]/30 py-16 px-4 sm:px-6 lg:px-8 text-xs text-[#EBE1CF]/75">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Brand & Mission -->
+      <div class="space-y-4">
+        <img src="public/assets/branding/Padel%20Ae%20Main%20Logo%20Colored.png" alt="Padelae" class="h-10 w-auto">
+        <p class="text-xs leading-relaxed font-light text-[#EBE1CF]/75">
+          Padelae is the UAE’s leading luxury indoor padel club network. 18 championship courts, elite European coaches, and vibrant athletic community in Abu Dhabi & Dubai.
+        </p>
+        <div class="text-[11px] text-[#8F7151] font-bold">
+          Open 365 Days • 7:30 AM – 12:00 AM (Midnight)
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigation</h4>
+        <ul class="space-y-2">
+          <li><a href="#booking-engine" class="hover:text-[#8F7151] transition-colors">Book Court</a></li>
+          <li><a href="#pricing-packages" class="hover:text-[#8F7151] transition-colors">Pricings & Packages</a></li>
+          <li><a href="venue-abudhabi.html" class="hover:text-[#8F7151] transition-colors">Padelae Abu Dhabi Center</a></li>
+          <li><a href="venue-dubai.html" class="hover:text-[#8F7151] transition-colors">Padelae Dubai Center</a></li>
+          <li><a href="academy.html" class="hover:text-[#8F7151] transition-colors">Coaching Academy</a></li>
+          <li><a href="tournaments.html" class="hover:text-[#8F7151] transition-colors">Tournaments & Leagues</a></li>
+          <li><a href="cafe-proshop.html" class="hover:text-[#8F7151] transition-colors">The Bandeja Café & Pro Shop</a></li>
+        </ul>
+      </div>
+
+      <!-- Rates Quick Reference -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Official Rates</h4>
+        <ul class="space-y-2 text-[#EBE1CF]/85">
+          <li>60 Min Full Court: <span class="text-[#EBE1CF] font-semibold">AED 300</span></li>
+          <li>90 Min Full Court: <span class="text-[#EBE1CF] font-semibold">AED 450</span></li>
+          <li>60 Min Open Match: <span class="text-[#EBE1CF] font-semibold">AED 75</span></li>
+          <li>90 Min Open Match: <span class="text-[#EBE1CF] font-semibold">AED 112.5</span></li>
+          <li>Single Lesson (1p): <span class="text-[#EBE1CF] font-semibold">AED 320</span></li>
+        </ul>
+      </div>
+
+      <!-- Direct Contact & WhatsApp -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">WhatsApp & Support</h4>
+        <p class="text-xs text-[#EBE1CF]/75 mb-3">Instant response for bookings & private events:</p>
+        <div class="space-y-2">
+          <a href="https://wa.me/918837866368" target="_blank" rel="noopener noreferrer" class="block font-bold text-brand-whatsapp text-sm hover:underline">
+            WhatsApp: 8837866368
+          </a>
+          <a href="mailto:info@padelae.com" class="block font-medium text-[#EBE1CF]/85 hover:underline">
+            Email: info@padelae.com
+          </a>
+          <div class="text-[11px] text-stone-500 pt-2">
+            Abu Dhabi: Musaffah Industrial Area<br>
+            Dubai: Al Quoz Industrial Area 2
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-500">
+      <div>
+        &copy; 2026 Padelae. All rights reserved.
+      </div>
+      <div class="mt-2 sm:mt-0 space-x-4">
+        <span>Raise Your Game. Master Your Skills.</span>
+      </div>
+    </div>
+  </footer>
+
+      <!-- ================= LIGHTBOX MODAL ================= -->
+  <div id="image-lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 backdrop-blur-md p-4 transition-opacity duration-300">
+    <button onclick="closeLightbox()" class="absolute top-5 right-5 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="relative max-w-4xl max-h-[90vh] flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Verified Review" class="max-h-[75vh] w-auto rounded-xl object-contain border border-white/10 shadow-2xl">
+      <p id="lightbox-caption" class="mt-4 text-center text-xs sm:text-sm text-stone-300 font-light max-w-xl px-4"></p>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT CONTROLLERS ================= -->
+  <script>
+    // 1. Mouse Spotlight Follower
+    (function initCursorGlow() {
+      const glow = document.getElementById('cursor-reactive-glow');
+      if (!glow) return;
+      window.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+      });
+    })();
+
+    // 2. Interactive Background 3D Court Canvas
+    (function initBg3dCanvas() {
+      const canvas = document.getElementById('bg-3d-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      let mouse = { x: 0.5, y: 0.5, targetX: 0.5, targetY: 0.5 };
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.targetX = e.clientX / w;
+        mouse.targetY = e.clientY / h;
+      });
+
+      const particles = [];
+      for (let i = 0; i < 30; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: Math.random() * 2 + 1,
+          color: Math.random() > 0.5 ? '#8F7151' : '#EBE1CF',
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35
+        });
+      }
+
+      function draw() {
+        mouse.x += (mouse.targetX - mouse.x) * 0.05;
+        mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.save();
+        ctx.strokeStyle = 'rgba(143, 113, 81, 0.08)';
+        ctx.lineWidth = 1;
+        const vanishX = w * 0.5 + (mouse.x - 0.5) * 120;
+        const vanishY = h * 0.25;
+
+        for (let x = -w * 0.2; x <= w * 1.2; x += 150) {
+          ctx.beginPath();
+          ctx.moveTo(x, h);
+          ctx.lineTo(vanishX + (x - vanishX) * 0.22, vanishY);
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        for (let p of particles) {
+          p.x += p.vx + (mouse.x - 0.5) * 0.3;
+          p.y += p.vy + (mouse.y - 0.5) * 0.3;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    })();
+
+    // 3. 3D Cutout Parallax Physics (Reacts to Cursor)
+    (function initCutoutParallax() {
+      const cutout = document.getElementById('cutout-player');
+      if (!cutout) return;
+      window.addEventListener('mousemove', (e) => {
+        const nx = (e.clientX / window.innerWidth) - 0.5;
+        const ny = (e.clientY / window.innerHeight) - 0.5;
+        const rx = -ny * 16;
+        const ry = nx * 18;
+        const tx = nx * 25;
+        const ty = ny * 15;
+        cutout.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translate3d(${tx}px, ${ty}px, 20px)`;
+      });
+    })();
+
+    // 4. 3D Tilt Card Physics on Hover
+    function init3dTilt() {
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const rx = -(y / rect.height) * 8;
+          const ry = (x / rect.width) * 8;
+          card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        });
+      });
+    }
+    init3dTilt();
+
+    // 5. Scroll Reveal Observer with Staggered Coach Pop-Up
+    (function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+      // Staggered Coaches Reveal
+      const coachObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.stagger-card').forEach((card, idx) => {
+              setTimeout(() => {
+                card.classList.add('revealed');
+              }, idx * 120);
+            });
+          }
+        });
+      }, { threshold: 0.15 });
+
+      const coachesGrid = document.getElementById('coaches-grid');
+      if (coachesGrid) coachObserver.observe(coachesGrid);
+    })();
+
+    // 6. Delayed Hero Entrance (Appears in Low-Mid after 3 seconds)
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const delayed = document.getElementById('hero-delayed-content');
+        if (delayed) {
+          delayed.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+          delayed.classList.add('opacity-100', 'translate-y-0');
+        }
+      }, 3000);
+    });
+
+    // 7. Hero Audio Unmute Controller
+    function toggleHeroSound() {
+      const video = document.getElementById('hero-video-player');
+      const icon = document.getElementById('hero-sound-icon');
+      const label = document.getElementById('hero-sound-label');
+      if (video) {
+        if (video.muted) {
+          video.muted = false;
+          icon.textContent = '🔊';
+          label.textContent = 'Mute Audio';
+        } else {
+          video.muted = true;
+          icon.textContent = '🔇';
+          label.textContent = 'Unmute Audio';
+        }
+      }
+    }
+
+    // 8. Auto-Scrolling Live Photo Showcase for Abu Dhabi and Dubai Facilities
+    (function initFacilityCarousels() {
+      // Abu Dhabi Photos
+      const adImages = [
+        'public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png',
+        'public/assets/courts/Abu%20dhabi%20Padel%20AE/Padel%20Ae%20interior%20,%20good%20quote%20%22%20Smash%20Hard%20,win%20easy%22%20can%20use%20this%20quote%20as%20facility%20motto%20.png',
+        'public/assets/courts/Abu%20dhabi%20Padel%20AE/Padel%20Ae%20interior%20frontdesk.png',
+        'public/assets/courts/Abu%20dhabi%20Padel%20AE/abu%20dhabi%20padel%20ae%20coffe%20shop.png',
+        'public/assets/courts/Abu%20dhabi%20Padel%20AE/abu%20dhabi%20padel%20ae%20sport%20shop%20named%20%22sports%20life%22.png'
+      ];
+      let adIdx = 0;
+      let adInterval = null;
+
+      function updateAdCarousel() {
+        const img = document.getElementById('ad-slide-img');
+        const dots = document.querySelectorAll('#ad-carousel-dots span');
+        if (img) {
+          img.style.opacity = '0';
+          setTimeout(() => {
+            img.src = adImages[adIdx];
+            img.style.opacity = '1';
+          }, 300);
+        }
+        dots.forEach((dot, idx) => {
+          dot.className = idx === adIdx ? 'w-5 h-2 rounded-full bg-[#8F7151] transition-all' : 'w-2 h-2 rounded-full bg-white/50 transition-all';
+        });
+      }
+
+      function startAdTimer() {
+        adInterval = setInterval(() => {
+          adIdx = (adIdx + 1) % adImages.length;
+          updateAdCarousel();
+        }, 3200);
+      }
+      startAdTimer();
+
+      const adCont = document.getElementById('ad-carousel-container');
+      if (adCont) {
+        adCont.addEventListener('mouseenter', () => clearInterval(adInterval));
+        adCont.addEventListener('mouseleave', () => startAdTimer());
+      }
+
+      // Dubai Photos
+      const dubaiImages = [
+        'public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png',
+        'public/assets/courts/Dubai%20Padel%20Ae/Dubai%20Court%20inside%201.png',
+        'public/assets/courts/Dubai%20Padel%20Ae/Dubai%20court%20inside%202.png',
+        'public/assets/courts/Dubai%20Padel%20Ae/Coffe%20shop%20in%20padel%20Ae.png',
+        'public/assets/courts/Dubai%20Padel%20Ae/Ppadel%20AE%20outside%20view%20high%20Aesthetic%20horizontal.png',
+        'public/assets/courts/Dubai%20Padel%20Ae/Sports%20shop%20%22%20padel%20life%22.png'
+      ];
+      let dubaiIdx = 0;
+      let dubaiInterval = null;
+
+      function updateDubaiCarousel() {
+        const img = document.getElementById('dubai-slide-img');
+        const dots = document.querySelectorAll('#dubai-carousel-dots span');
+        if (img) {
+          img.style.opacity = '0';
+          setTimeout(() => {
+            img.src = dubaiImages[dubaiIdx];
+            img.style.opacity = '1';
+          }, 300);
+        }
+        dots.forEach((dot, idx) => {
+          dot.className = idx === dubaiIdx ? 'w-5 h-2 rounded-full bg-[#8F7151] transition-all' : 'w-2 h-2 rounded-full bg-white/50 transition-all';
+        });
+      }
+
+      function startDubaiTimer() {
+        dubaiInterval = setInterval(() => {
+          dubaiIdx = (dubaiIdx + 1) % dubaiImages.length;
+          updateDubaiCarousel();
+        }, 3200);
+      }
+      startDubaiTimer();
+
+      const dubaiCont = document.getElementById('dubai-carousel-container');
+      if (dubaiCont) {
+        dubaiCont.addEventListener('mouseenter', () => clearInterval(dubaiInterval));
+        dubaiCont.addEventListener('mouseleave', () => startDubaiTimer());
+      }
+    })();
+
+    // 9. Custom Luxury Calendar Component (Bespoke 7-Star Calendar Dropdown)
+    let curCalDate = new Date();
+    let selectedBookingDateStr = 'Sunday, Nov 8, 2026';
+    let selectedBookingISODate = new Date().toISOString().split('T')[0];
+
+    function toggleLuxuryCalendar() {
+      const drop = document.getElementById('luxury-calendar-dropdown');
+      if (drop) drop.classList.toggle('hidden');
+    }
+
+    function changeCalendarMonth(delta) {
+      curCalDate.setMonth(curCalDate.getMonth() + delta);
+      renderCalendarDays();
+    }
+
+    function selectQuickDate(offsetDays) {
+      const d = new Date();
+      if (offsetDays === 6) { // Saturday
+        const day = d.getDay();
+        const diff = (6 - day + 7) % 7 || 7;
+        d.setDate(d.getDate() + diff);
+      } else if (offsetDays === 7) { // Sunday
+        const day = d.getDay();
+        const diff = (7 - day + 7) % 7 || 7;
+        d.setDate(d.getDate() + diff);
+      } else {
+        d.setDate(d.getDate() + offsetDays);
+      }
+
+      curCalDate = new Date(d);
+      setBookingDateObject(d);
+      toggleLuxuryCalendar();
+    }
+
+    function setBookingDateObject(d) {
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      selectedBookingDateStr = `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+      selectedBookingISODate = d.toISOString().split('T')[0];
+      
+      const disp = document.getElementById('display-selected-date');
+      if (disp) disp.textContent = selectedBookingDateStr;
+      
+      updateBookingSummary();
+    }
+
+    function renderCalendarDays() {
+      const grid = document.getElementById('cal-days-grid');
+      const myLabel = document.getElementById('cal-month-year');
+      if (!grid) return;
+
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      myLabel.textContent = `${months[curCalDate.getMonth()]} ${curCalDate.getFullYear()}`;
+
+      grid.innerHTML = '';
+
+      const firstDay = new Date(curCalDate.getFullYear(), curCalDate.getMonth(), 1).getDay();
+      const offset = (firstDay + 6) % 7; // Monday start
+      const daysInMonth = new Date(curCalDate.getFullYear(), curCalDate.getMonth() + 1, 0).getDate();
+
+      for (let i = 0; i < offset; i++) {
+        const blank = document.createElement('div');
+        blank.className = 'py-2';
+        grid.appendChild(blank);
+      }
+
+      const today = new Date();
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = d;
+        btn.className = 'py-2 rounded-xl text-xs font-bold transition-all hover:bg-[#8F7151] hover:text-white';
+        
+        const thisDate = new Date(curCalDate.getFullYear(), curCalDate.getMonth(), d);
+        if (thisDate.toDateString() === today.toDateString()) {
+          btn.classList.add('border', 'border-[#8F7151]', 'text-[#0A4834]');
+        } else {
+          btn.classList.add('text-[#0A4834]');
+        }
+
+        btn.onclick = () => {
+          setBookingDateObject(thisDate);
+          toggleLuxuryCalendar();
+        };
+
+        grid.appendChild(btn);
+      }
+    }
+    renderCalendarDays();
+
+    // 10. Booking Engine State Controller
+    let bookingVenue = 'Abu Dhabi (Musaffah)';
+    let bookingCourtsCount = 6;
+    let bookingTime = '07:30 PM';
+    let bookingFormat = { id: '90m_full', price: 450, title: '90 Minutes (Full Court)' };
+    let selectedCoach = 'None';
+    let selectedCoachDesc = 'Matchplay Slot (No Coach Requested)';
+
+    function setBookingVenue(name, courts) {
+      bookingVenue = name;
+      bookingCourtsCount = courts;
+
+      const adCard = document.getElementById('b-venue-ad');
+      const dubaiCard = document.getElementById('b-venue-dubai');
+      const adCheck = document.getElementById('ad-check');
+      const dubaiCheck = document.getElementById('dubai-check');
+
+      if (name.includes('Abu Dhabi')) {
+        adCard.className = 'tilt-card cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-[#EBE1CF]/40 text-left transition-all flex items-center space-x-4 shadow-md group relative';
+        dubaiCard.className = 'tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-white text-left transition-all flex items-center space-x-4 hover:border-[#8F7151] group relative';
+        if (adCheck) adCheck.classList.remove('hidden');
+        if (dubaiCheck) dubaiCheck.classList.add('hidden');
+      } else {
+        dubaiCard.className = 'tilt-card cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-[#EBE1CF]/40 text-left transition-all flex items-center space-x-4 shadow-md group relative';
+        adCard.className = 'tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-white text-left transition-all flex items-center space-x-4 hover:border-[#8F7151] group relative';
+        if (dubaiCheck) dubaiCheck.classList.remove('hidden');
+        if (adCheck) adCheck.classList.add('hidden');
+      }
+
+      updateBookingSummary();
+    }
+
+    function setBookingTime(timeStr) {
+      bookingTime = timeStr;
+      document.querySelectorAll('.time-slot-pill').forEach(btn => {
+        if (btn.textContent.trim() === timeStr) {
+          btn.className = 'time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#0A4834] border-2 border-[#8F7151] text-white shadow-md scale-105 transition-all';
+        } else {
+          btn.className = 'time-slot-pill tilt-card py-2.5 px-1 rounded-xl text-xs font-mono font-bold bg-[#F7F3EB] border border-black/10 text-[#0A4834] hover:bg-[#0A4834] hover:text-white transition-all';
+        }
+      });
+      updateBookingSummary();
+    }
+
+    function setBookingFormat(id, price, title) {
+      bookingFormat = { id, price, title };
+      ['60m_full', '90m_full', '60m_open', '90m_open'].forEach(fmt => {
+        const card = document.getElementById(`b-fmt-${fmt}`);
+        if (!card) return;
+        if (fmt === id) {
+          card.className = 'fmt-card tilt-card cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-[#EBE1CF] text-center shadow-lg transition-all relative';
+        } else {
+          card.className = 'fmt-card tilt-card cursor-pointer p-4 rounded-2xl border-2 border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151] transition-all relative';
+        }
+      });
+      updateBookingSummary();
+    }
+
+    function setBookingCoach(name, desc) {
+      selectedCoach = name;
+      selectedCoachDesc = desc;
+      document.querySelectorAll('.coach-pill').forEach(btn => {
+        if (btn.textContent.includes(name)) {
+          btn.className = 'coach-pill tilt-card p-2 rounded-xl border-2 border-[#0A4834] bg-[#EBE1CF] text-center';
+        } else {
+          btn.className = 'coach-pill tilt-card p-2 rounded-xl border border-black/10 bg-[#F7F3EB] text-center hover:border-[#8F7151]';
+        }
+      });
+      updateBookingSummary();
+    }
+
+    function selectCourtPricingAndScroll(id, price, title) {
+      setBookingFormat(id, price, title);
+      showBookingToast(title, price, id);
+      const bookingSection = document.getElementById('booking-engine');
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function showBookingToast(title, price, id) {
+      let toast = document.getElementById('booking-live-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'booking-live-toast';
+        toast.className = 'fixed bottom-6 right-6 z-50 max-w-md bg-[#0A4834] border border-[#8F7151] text-[#EBE1CF] p-4 rounded-2xl shadow-2xl backdrop-blur-xl transition-all duration-300 transform translate-y-20 opacity-0 flex items-center space-x-3.5';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `
+        <div class="w-9 h-9 rounded-full bg-[#8F7151] text-white flex items-center justify-center flex-shrink-0 font-bold text-sm">✓</div>
+        <div class="flex-1 text-xs">
+          <p class="font-bold text-white">${title} <span class="text-[#8F7151] font-mono">(AED ${price})</span> Selected</p>
+          <p class="text-[#EBE1CF]/80 mt-0.5">Customize time slot below, or <a href="courts.html?fmt=${id}" class="text-white font-bold underline hover:text-[#8F7151]">Open Dedicated Booking Page &rarr;</a></p>
+        </div>
+        <button onclick="dismissBookingToast()" aria-label="Close notification" class="text-stone-300 hover:text-white p-1 text-base leading-none">&times;</button>
+      `;
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+      });
+      clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(() => {
+        dismissBookingToast();
+      }, 7000);
+    }
+
+    function dismissBookingToast() {
+      const toast = document.getElementById('booking-live-toast');
+      if (toast) {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }
+    }
+
+    function updateBookingSummary() {
+      const sFmt = document.getElementById('b-summary-format');
+      const sDet = document.getElementById('b-summary-details');
+      const sCoach = document.getElementById('b-summary-coach');
+      const sPrice = document.getElementById('b-summary-price');
+
+      if (sFmt) sFmt.textContent = bookingFormat.title;
+      if (sDet) sDet.textContent = `${bookingVenue} • ${selectedBookingDateStr} at ${bookingTime}`;
+      if (sCoach) sCoach.textContent = selectedCoach === 'None' ? 'Matchplay Slot (No Coach Requested)' : `Coach: ${selectedCoach} (${selectedCoachDesc})`;
+      if (sPrice) sPrice.textContent = `AED ${bookingFormat.price}`;
+
+      const text = `Hello Padelae! I would like to book a court slot:
+- Location: ${bookingVenue}
+- Date: ${selectedBookingDateStr}
+- Time Slot: ${bookingTime}
+- Format: ${bookingFormat.title}
+- Total Price: AED ${bookingFormat.price}
+- Preferred Coach / Option: ${selectedCoach} (${selectedCoachDesc})`;
+
+      const waUrl = `https://wa.me/918837866368?text=${encodeURIComponent(text)}`;
+      const btnWa = document.getElementById('btn-final-whatsapp-booking');
+      if (btnWa) btnWa.href = waUrl;
+    }
+
+    // Video Sound Controller
+    function toggleVideoSound(videoId, btnId) {
+      const v = document.getElementById(videoId);
+      const btn = document.getElementById(btnId);
+      if (v) {
+        if (v.muted) {
+          v.muted = false;
+          if (btn) btn.innerHTML = '🔊 Mute Sound';
+        } else {
+          v.muted = true;
+          if (btn) btn.innerHTML = '🔇 Unmute Sound';
+        }
+      }
+    }
+
+    // Lightbox Modal
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('image-lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      if (modal && img) {
+        img.src = src;
+        if (cap) cap.textContent = caption || '';
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('image-lightbox-modal');
+      if (modal) {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Mobile Navigation Drawer Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    // Initialize summary on page load
+    updateBookingSummary();
+  </script>
+</body>
+</html>

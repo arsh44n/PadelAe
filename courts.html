@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Court Booking & Availability | PADELAE Dubai & Abu Dhabi</title>
+  <meta name="description" content="Book 18 championship indoor panoramic padel courts in Dubai and Abu Dhabi. 100% climate controlled, real calendar booking, and instant WhatsApp confirmation.">
+
+    <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#0A4834',
+              forest: '#062B1F',
+              gold: '#8F7151',
+              cream: '#EBE1CF',
+              sandstone: '#F7F3EB',
+              whatsapp: '#25D366'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      background-color: #F7F3EB;
+      color: #0A4834;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #F7F3EB; }
+    ::-webkit-scrollbar-thumb { background: #8F7151; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-[#F7F3EB] text-[#0A4834] antialiased">
+
+  <!-- ================= GLOBAL PERSISTENT NAVBAR ================= -->
+    <!-- ================= GLOBAL LUXURY PERSISTENT NAVBAR ================= -->
+  <header class="sticky top-0 z-40 w-full bg-[#0A4834]/95 backdrop-blur-xl border-b border-[#8F7151]/30 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <img src="public/assets/branding/Main%20padel%20AE%20logo_white.png" alt="Padelae" class="h-9 sm:h-11 w-auto object-contain">
+        <span class="text-xs font-semibold text-[#EBE1CF]/80 group-hover:text-[#8F7151] transition-colors flex items-center space-x-1">
+          <span>&larr;</span>
+          <span>Back to Hub</span>
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-7 text-xs font-semibold uppercase tracking-widest text-[#EBE1CF]">
+        <a href="courts.html" class="text-[#8F7151] font-bold border-b-2 border-[#8F7151] pb-1">Courts</a>
+        <a href="academy.html" class="text-[#EBE1CF]/90 hover:text-[#8F7151] transition-colors">Academy</a>
+        <a href="venue-dubai.html" class="text-[#EBE1CF]/90 hover:text-[#8F7151] transition-colors">Dubai Venue</a>
+        <a href="venue-abudhabi.html" class="text-[#EBE1CF]/90 hover:text-[#8F7151] transition-colors">Abu Dhabi Venue</a>
+        <a href="tournaments.html" class="text-[#EBE1CF]/90 hover:text-[#8F7151] transition-colors">Tournaments</a>
+        <a href="cafe-proshop.html" class="text-[#EBE1CF]/90 hover:text-[#8F7151] transition-colors">Café & Pro Shop</a>
+      </nav>
+
+      <div class="flex items-center space-x-3">
+        <a href="https://wa.me/918837866368?text=Hello%20Padelae!%20I%20would%20like%20to%20inquire%20about%20booking." 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#8F7151] text-white font-extrabold text-xs uppercase tracking-wider hover:bg-[#EBE1CF] hover:text-[#0A4834] transition-all shadow-md flex items-center space-x-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span class="hidden sm:inline">WhatsApp</span>
+          <span>+971 54 587 2384</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MAIN BOOKING INTERACTION ================= -->
+  <section class="py-12 sm:py-20 bg-[#F7F3EB] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-[#635345] mb-6 uppercase tracking-wider">
+        <a href="index.html" class="hover:text-[#0A4834]">Home</a>
+        <span>/</span>
+        <span class="text-[#0A4834] font-semibold">Championship Court Booking</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Visual Gallery Left -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-white border border-[#8F7151]/30 shadow-2xl">
+            <img id="courts-hero-image" src="public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png" alt="Championship Court Overview" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-[10px] font-bold text-[#8F7151] uppercase">
+              18 Panoramic Indoor Courts
+            </div>
+            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-[#8F7151]/30 text-xs text-[#635345]">
+              <span class="text-[#0A4834] font-bold block">100% Climate-Controlled • Constant 21°C</span>
+              International WPT glass standards, shadowless lighting, and full acoustic insulation.
+            </div>
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="grid grid-cols-4 gap-2">
+            <button onclick="setCourtHeroImage('public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png')" class="aspect-video rounded-xl overflow-hidden border border-[#8F7151]/40 hover:border-[#0A4834]">
+              <img src="public/assets/courts/Dubai%20Padel%20Ae/Court%20inside%20overview.png" alt="Overview" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setCourtHeroImage('public/assets/courts/Dubai%20Padel%20Ae/Dubai%20Court%20inside%201.png')" class="aspect-video rounded-xl overflow-hidden border border-[#8F7151]/40 hover:border-[#0A4834]">
+              <img src="public/assets/courts/Dubai%20Padel%20Ae/Dubai%20Court%20inside%201.png" alt="Court 1" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setCourtHeroImage('public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png')" class="aspect-video rounded-xl overflow-hidden border border-[#8F7151]/40 hover:border-[#0A4834]">
+              <img src="public/assets/courts/Abu%20dhabi%20Padel%20AE/Abu%20dhabi%20padel%20ae%20court%20overview%20shot.png" alt="Abu Dhabi Court" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setCourtHeroImage('public/assets/courts/Dubai%20Padel%20Ae/Ppadel%20AE%20outside%20view%20high%20Aesthetic%20horizontal.png')" class="aspect-video rounded-xl overflow-hidden border border-[#8F7151]/40 hover:border-[#0A4834]">
+              <img src="public/assets/courts/Dubai%20Padel%20Ae/Ppadel%20AE%20outside%20view%20high%20Aesthetic%20horizontal.png" alt="Outside View" class="w-full h-full object-cover">
+            </button>
+          </div>
+
+          <!-- Feature Specs -->
+          <div class="p-6 rounded-2xl bg-white border border-[#8F7151]/30 space-y-2 text-xs text-[#635345]">
+            <div class="flex items-center justify-between">
+              <span>Operating Hours:</span>
+              <span class="text-[#0A4834] font-bold">7:30 AM – 12:00 AM (Midnight)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Complimentary Valet Parking:</span>
+              <span class="text-[#0A4834] font-bold">Available at Door</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Ladies-Only Private Wing:</span>
+              <span class="text-[#8F7151] font-bold">100% Sightline Protected</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real Calendar Booking Engine Right -->
+        <div class="lg:col-span-6 bg-white rounded-3xl border border-[#8F7151]/30 p-6 sm:p-8 space-y-6">
+          
+          <div>
+            <div class="inline-flex items-center space-x-1 text-xs text-[#0A4834] font-bold uppercase tracking-wider mb-2">
+              <span>●</span><span>Instant Slot Confirmation</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-black font-display uppercase text-[#0A4834]">
+              Book A Padel Court
+            </h1>
+            <p class="text-xs text-[#635345] mt-1">Select date from the calendar and choose your format.</p>
+          </div>
+
+          <!-- Location Choice (Abu Dhabi First, Dubai Second) -->
+          <div>
+            <label class="text-[11px] font-bold uppercase tracking-wider text-[#635345] block mb-2">1. Select Location:</label>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <button onclick="setCourtLoc('Abu Dhabi (Musaffah)')" id="loc-btn-ad" class="py-3 px-4 rounded-2xl border-2 border-[#0A4834] bg-brand-green/10 font-bold text-[#0A4834] text-center transition-all">
+                Abu Dhabi (Musaffah)
+              </button>
+              <button onclick="setCourtLoc('Dubai (Al Quoz)')" id="loc-btn-dubai" class="py-3 px-4 rounded-2xl border-2 border-[#8F7151]/30 bg-[#EBE1CF]/30 font-medium text-[#635345] text-center hover:border-white/30 transition-all">
+                Dubai (Al Quoz) • 18 Courts
+              </button>
+            </div>
+          </div>
+
+          <!-- Real Calendar Date Input (Whole Box Clickable) -->
+          <div>
+            <label for="court-page-date" class="text-[11px] font-bold uppercase tracking-wider text-[#635345] block mb-2">2. Match Date (Real Calendar):</label>
+            <div onclick="document.getElementById('court-page-date').showPicker()" class="cursor-pointer relative">
+              <input type="date" id="court-page-date" onclick="this.showPicker()" onchange="updateCourtSummary()" class="cursor-pointer w-full py-3.5 px-4 rounded-2xl bg-[#F7F3EB] border border-[#8F7151]/40 text-sm text-[#0A4834] focus:border-[#0A4834] focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Slot Time Grid -->
+          <div>
+            <label class="text-[11px] font-bold uppercase tracking-wider text-[#635345] block mb-2">3. Preferred Time Slot:</label>
+            <div class="grid grid-cols-4 gap-2 text-xs" id="slot-time-buttons-page">
+              <button onclick="setCourtSlotTime('08:00 AM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center">08:00 AM</button>
+              <button onclick="setCourtSlotTime('09:30 AM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center">09:30 AM</button>
+              <button onclick="setCourtSlotTime('11:00 AM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center">11:00 AM</button>
+              <button onclick="setCourtSlotTime('04:00 PM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center">04:00 PM</button>
+              <button onclick="setCourtSlotTime('05:30 PM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center">05:30 PM</button>
+              <button onclick="setCourtSlotTime('07:00 PM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#0A4834] bg-brand-green/20 text-[#8F7151] font-bold font-mono text-center">07:00 PM</button>
+              <button onclick="setCourtSlotTime('08:30 PM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center">08:30 PM</button>
+              <button onclick="setCourtSlotTime('10:00 PM')" class="page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center">10:00 PM</button>
+            </div>
+          </div>
+
+          <!-- Format Cards -->
+          <div>
+            <label class="text-[11px] font-bold uppercase tracking-wider text-[#635345] block mb-2">4. Format & Pricing:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              
+              <div onclick="setCourtPageFormat('60m_full', 300, '60 Minutes (Full Court)')" id="p-fmt-60m-full" class="cursor-pointer p-4 rounded-2xl border-2 border-[#8F7151]/30 bg-[#EBE1CF]/30 hover:border-white/30 transition-all">
+                <div class="flex justify-between items-center">
+                  <span class="text-xs font-bold text-[#0A4834]">60 Min Full Court</span>
+                  <span class="text-xs font-black text-[#8F7151]">AED 300</span>
+                </div>
+                <p class="text-[10px] text-[#635345] mt-1">Standard 1-hour session</p>
+              </div>
+
+              <div onclick="setCourtPageFormat('90m_full', 450, '90 Minutes (Full Court)')" id="p-fmt-90m-full" class="cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-brand-green/10 transition-all">
+                <div class="flex justify-between items-center">
+                  <span class="text-xs font-bold text-[#0A4834]">90 Min Full Court</span>
+                  <span class="text-xs font-black text-[#8F7151]">AED 450</span>
+                </div>
+                <p class="text-[10px] text-[#8F7151] mt-1">Recommended match duration</p>
+              </div>
+
+              <div onclick="setCourtPageFormat('60m_open', 75, '60 Minutes (Open Match)')" id="p-fmt-60m-open" class="cursor-pointer p-4 rounded-2xl border-2 border-[#8F7151]/30 bg-[#EBE1CF]/30 hover:border-white/30 transition-all">
+                <div class="flex justify-between items-center">
+                  <span class="text-xs font-bold text-[#0A4834]">60 Min Open Match</span>
+                  <span class="text-xs font-black text-[#8F7151]">AED 75</span>
+                </div>
+                <p class="text-[10px] text-[#635345] mt-1">Single player matchmaking</p>
+              </div>
+
+              <div onclick="setCourtPageFormat('90m_open', 112.5, '90 Minutes (Open Match)')" id="p-fmt-90m-open" class="cursor-pointer p-4 rounded-2xl border-2 border-[#8F7151]/30 bg-[#EBE1CF]/30 hover:border-white/30 transition-all">
+                <div class="flex justify-between items-center">
+                  <span class="text-xs font-bold text-[#0A4834]">90 Min Open Match</span>
+                  <span class="text-xs font-black text-[#8F7151]">AED 112.5</span>
+                </div>
+                <p class="text-[10px] text-[#635345] mt-1">Single player matchmaking</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Preferred Coach -->
+          <div>
+            <label for="court-preferred-coach" class="text-[11px] font-bold uppercase tracking-wider text-[#635345] block mb-2">5. Preferred Coach or Notes (Optional):</label>
+            <select id="court-preferred-coach" onchange="updateCourtSummary()" class="w-full py-3 px-4 rounded-2xl bg-[#F7F3EB] border border-[#8F7151]/40 text-xs text-[#0A4834] focus:border-[#0A4834] focus:outline-none">
+              <option value="No Coach Needed">No Coach Needed (Match Play)</option>
+              <option value="Coach André Lerias (Dubai)">Coach André Lerias (Dubai)</option>
+              <option value="Coach Álvaro Dotras (Dubai)">Coach Álvaro Dotras (Dubai)</option>
+              <option value="Coach Esther García (Dubai)">Coach Esther García (Dubai)</option>
+              <option value="Coach Sol Pérez (Ladies Wing)">Coach Sol Pérez (Ladies Wing)</option>
+              <option value="Coach Enric Arauz (Abu Dhabi)">Coach Enric Arauz (Abu Dhabi)</option>
+            </select>
+          </div>
+
+          <!-- Total & WhatsApp Button -->
+          <div class="pt-6 border-t border-[#8F7151]/30 flex items-center justify-between">
+            <div>
+              <span class="text-[11px] uppercase text-[#635345] block" id="court-sum-format">90 Minutes (Full Court)</span>
+              <span class="text-2xl font-black text-[#8F7151]" id="court-sum-price">AED 450</span>
+            </div>
+            <a id="court-wa-link" 
+               href="https://wa.me/918837866368" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="px-8 py-4 rounded-full bg-[#8F7151] text-white hover:bg-[#0A4834] font-extrabold text-sm uppercase tracking-wider hover:bg-white transition-all flex items-center space-x-2">
+              <span>Lock Slot on WhatsApp</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= GLOBAL LUXURY FOOTER ================= -->
+  <footer class="bg-[#062B1F] text-[#EBE1CF] border-t border-[#8F7151]/40 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="space-y-3">
+        <img src="public/assets/branding/Main%20padel%20AE%20logo_white.png" alt="Padelae" class="h-10 w-auto object-contain">
+        <p class="text-xs text-[#EBE1CF]/75 leading-relaxed">
+          The UAE's premier luxury indoor padel club. 18 championship air-conditioned courts, European master coaches, and 7-star country club athletic hospitality.
+        </p>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold uppercase tracking-widest text-[#8F7151] mb-3">Navigation</h5>
+        <ul class="space-y-2 text-xs text-[#EBE1CF]/80">
+          <li><a href="index.html" class="hover:text-[#8F7151] transition-colors">Flagship Hub</a></li>
+          <li><a href="courts.html" class="hover:text-[#8F7151] transition-colors">Courts & Booking</a></li>
+          <li><a href="academy.html" class="hover:text-[#8F7151] transition-colors">Coaching Academy</a></li>
+          <li><a href="venue-abudhabi.html" class="hover:text-[#8F7151] transition-colors">Padelae Abu Dhabi</a></li>
+          <li><a href="venue-dubai.html" class="hover:text-[#8F7151] transition-colors">Padelae Dubai</a></li>
+          <li><a href="tournaments.html" class="hover:text-[#8F7151] transition-colors">Tournaments & Leagues</a></li>
+          <li><a href="cafe-proshop.html" class="hover:text-[#8F7151] transition-colors">The Bandeja Café & Pro Shop</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold uppercase tracking-widest text-[#8F7151] mb-3">Locations</h5>
+        <ul class="space-y-2 text-xs text-[#EBE1CF]/80">
+          <li><strong class="text-[#0A4834]">Abu Dhabi:</strong> Musaffah Industrial Area</li>
+          <li><strong class="text-[#0A4834]">Dubai:</strong> Warehouse 701, Al Quoz Industrial 2</li>
+          <li><strong class="text-[#0A4834]">Hours:</strong> 7:30 AM – Midnight Daily</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold uppercase tracking-widest text-[#8F7151] mb-3">Direct Concierge</h5>
+        <p class="text-xs text-[#EBE1CF]/80">WhatsApp: +971 54 587 2384 / 8837866368</p>
+        <p class="text-xs text-[#EBE1CF]/80 mt-1">Email: info@padelae.com</p>
+        <div class="mt-4">
+          <a href="https://wa.me/918837866368" class="inline-block px-4 py-2 rounded-full bg-[#8F7151] text-white font-bold text-xs hover:bg-[#EBE1CF] hover:text-[#0A4834] transition-all">
+            Instant WhatsApp &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto border-t border-[#8F7151]/30 mt-8 pt-6 text-center text-xs text-[#EBE1CF]/60">
+      &copy; 2026 Padelae. All rights reserved. Raise Your Game. Master Your Skills.
+    </div>
+  </footer>
+
+  <script>
+    // Real Calendar Init
+    const pageDate = document.getElementById('court-page-date');
+    if (pageDate) {
+      const today = new Date().toISOString().split('T')[0];
+      pageDate.min = today;
+      pageDate.value = today;
+    }
+
+    let courtLoc = 'Abu Dhabi (Musaffah)';
+    let courtTime = '07:00 PM';
+    let courtFmt = { id: '60m_full', price: 300, title: '60 Minutes (Full Court)' };
+
+    function setCourtHeroImage(src) {
+      document.getElementById('courts-hero-image').src = src;
+    }
+
+    function setCourtLoc(name) {
+      courtLoc = name;
+      const bDubai = document.getElementById('loc-btn-dubai');
+      const bAd = document.getElementById('loc-btn-ad');
+      if (name.includes('Dubai')) {
+        bDubai.className = 'py-3 px-4 rounded-2xl border-2 border-[#0A4834] bg-brand-green/10 font-bold text-[#0A4834] text-center transition-all';
+        bAd.className = 'py-3 px-4 rounded-2xl border-2 border-[#8F7151]/30 bg-[#EBE1CF]/30 font-medium text-[#635345] text-center hover:border-white/30 transition-all';
+      } else {
+        bAd.className = 'py-3 px-4 rounded-2xl border-2 border-[#0A4834] bg-brand-green/10 font-bold text-[#0A4834] text-center transition-all';
+        bDubai.className = 'py-3 px-4 rounded-2xl border-2 border-[#8F7151]/30 bg-[#EBE1CF]/30 font-medium text-[#635345] text-center hover:border-white/30 transition-all';
+      }
+      updateCourtSummary();
+    }
+
+    function setCourtSlotTime(timeStr) {
+      courtTime = timeStr;
+      document.querySelectorAll('.page-time-btn').forEach(btn => {
+        if (btn.textContent.trim() === timeStr) {
+          btn.className = 'page-time-btn py-2 px-1 rounded-xl border border-[#0A4834] bg-brand-green/20 text-[#8F7151] font-bold font-mono text-center';
+        } else {
+          btn.className = 'page-time-btn py-2 px-1 rounded-xl border border-[#8F7151]/30 text-[#635345] font-mono text-center';
+        }
+      });
+      updateCourtSummary();
+    }
+
+    function setCourtPageFormat(id, price, title) {
+      courtFmt = { id, price, title };
+      ['60m-full', '90m-full', '60m-open', '90m-open'].forEach(fmt => {
+        const el = document.getElementById(`p-fmt-${fmt}`);
+        if (`p-fmt-${fmt}` === `p-fmt-${id.replace('_', '-')}`) {
+          el.className = 'cursor-pointer p-4 rounded-2xl border-2 border-[#0A4834] bg-brand-green/10 transition-all';
+        } else {
+          el.className = 'cursor-pointer p-4 rounded-2xl border-2 border-[#8F7151]/30 bg-[#EBE1CF]/30 hover:border-white/30 transition-all';
+        }
+      });
+      updateCourtSummary();
+    }
+
+    function updateCourtSummary() {
+      const selectedDate = document.getElementById('court-page-date').value || 'Selected Date';
+      const coachSelect = document.getElementById('court-preferred-coach').value;
+
+      document.getElementById('court-sum-format').textContent = courtFmt.title;
+      document.getElementById('court-sum-price').textContent = `AED ${courtFmt.price}`;
+
+      const text = `Hello Padelae! I would like to book a court slot:
+- Location: ${courtLoc}
+- Date: ${selectedDate}
+- Time Slot: ${courtTime}
+- Format: ${courtFmt.title}
+- Total Price: AED ${courtFmt.price}
+- Preferred Coach / Note: ${coachSelect}`;
+
+      document.getElementById('court-wa-link').href = `https://wa.me/918837866368?text=${encodeURIComponent(text)}`;
+    }
+
+    // Auto-parse URL parameters on load (?fmt=... & loc=...)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const fmtParam = params.get('fmt');
+      const locParam = params.get('loc');
+
+      if (locParam && locParam.toLowerCase().includes('dubai')) {
+        setCourtLoc('Dubai (Al Quoz)');
+      } else {
+        setCourtLoc('Abu Dhabi (Musaffah)');
+      }
+
+      if (fmtParam === '60m_full' || fmtParam === '60m-full') {
+        setCourtPageFormat('60m_full', 300, '60 Minutes (Full Court)');
+      } else if (fmtParam === '90m_full' || fmtParam === '90m-full') {
+        setCourtPageFormat('90m_full', 450, '90 Minutes (Full Court)');
+      } else if (fmtParam === '60m_open' || fmtParam === '60m-open') {
+        setCourtPageFormat('60m_open', 75, '60 Minutes (Open Match)');
+      } else if (fmtParam === '90m_open' || fmtParam === '90m-open') {
+        setCourtPageFormat('90m_open', 112.5, '90 Minutes (Open Match)');
+      } else {
+        setCourtPageFormat('60m_full', 300, '60 Minutes (Full Court)');
+      }
+
+      updateCourtSummary();
+    });
+  </script>
+
+</body>
+</html>

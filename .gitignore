@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+frames/
+temp_frames/
+extracted_frames/
+tools/
+apply_luxury_upgrade.py

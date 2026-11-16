@@ -1,0 +1,217 @@
+{
+  "pipeline_version": "3.0.0",
+  "client": {
+    "brand_name": "Padelae",
+    "monogram": "PAE",
+    "industry": "Luxury Indoor Padel Club & Athletic Sanctuary",
+    "locations": [
+      "Al Quoz Industrial Area 2, Dubai (18 Indoor Courts Flagship)",
+      "Musaffah, Abu Dhabi (Premium Indoor Arena)",
+      "Sharjah Regional Club"
+    ],
+    "operating_hours": "Open 365 Days \u2022 7:30 AM \u2013 12:00 AM (Midnight)",
+    "seed_links": {
+      "primary": "https://www.instagram.com/padelae_official/",
+      "website": "https://padelae.com"
+    }
+  },
+  "site_topology": "MULTI_PAGE_HUB_AND_SPOKE",
+  "site_topology_pages": [
+    {
+      "slug": "courts",
+      "file": "courts.html",
+      "title": "Championship Indoor Courts & Booking",
+      "category": "18 WPT-Spec Panoramic Courts \u2022 Ladies Private Sanctuary",
+      "single_price": 300,
+      "bundle_price": 450
+    },
+    {
+      "slug": "academy",
+      "file": "academy.html",
+      "title": "Padelae Coaching Academy",
+      "category": "World-Class Pro Coaching \u2022 Andr\u00e9 Lerias & \u00c1lvaro Dotras",
+      "single_price": 320,
+      "bundle_price": 1440
+    },
+    {
+      "slug": "tournaments",
+      "file": "tournaments.html",
+      "title": "Tournaments, Open Matches & Corporate",
+      "category": "Americano, Mexicano & Corporate Buyouts",
+      "single_price": 75,
+      "bundle_price": 112.5
+    },
+    {
+      "slug": "cafe-proshop",
+      "file": "cafe-proshop.html",
+      "title": "The Bandeja Caf\u00e9 & Pro Shop",
+      "category": "Specialty Coffee \u2022 Bullpadel, Head & Nox Gear",
+      "single_price": 25,
+      "bundle_price": 1200
+    }
+  ],
+  "business_model": {
+    "archetype": "FACILITY_RENTAL",
+    "psychology": "PRESTIGE_SHOWCASE",
+    "rationale": "UAE's largest and most prestigious indoor padel network combining high-urgency court slot booking with ultra-luxury athletic hospitality, private ladies facilities, professional academy, and social club experience.",
+    "recon_targets": [
+      "18 Indoor Panoramic WPT-spec glass courts with Mondo turf and climate control",
+      "Pricing schedule: 60 min (AED 300) vs 90 min (AED 450) court bookings, AED 75 open match",
+      "Elite Spanish & Portuguese certified coaching staff (Andr\u00e9 Lerias, \u00c1lvaro Dotras, Sol P\u00e9rez, Esther Garc\u00eda)",
+      "Amenities: The Bandeja Cafe, Head/Bullpadel Pro Shop, Valet Parking, Private Ladies Club",
+      "Google review telemetry: 4.4 rating with 200+ reviews across main club and 4.9 on FM Academy",
+      "Official sponsors and brand endorsers: Mashreq Bank, Head, Mart\u00edn Di Nenno"
+    ],
+    "asset_hunting_priorities": [
+      "Official white logo SVG/PNG",
+      "High-res photography of indoor panoramic glass courts",
+      "High-res player and coach action photography",
+      "Looping 720p/1080p padel match video reel",
+      "Verified customer review testimonials and ratings"
+    ],
+    "primary_conversion": {
+      "cta_text": "RESERVE A COURT",
+      "secondary_cta": "WHATSAPP CONCIERGE",
+      "form_intent_options": [
+        "Court Booking (Dubai Al Quoz)",
+        "Court Booking (Abu Dhabi)",
+        "Padelae Academy Coaching Lesson",
+        "Ladies Club Private Court",
+        "Corporate Event / Tournament Buyout"
+      ]
+    },
+    "benchmark_reference_pool": [
+      "Club Padel Dubai (clubpadel.ae)",
+      "Equinox Athletic Clubs (equinox.com)",
+      "Babolat Padel Arena"
+    ]
+  },
+  "motion_strategy": "CINEMATIC_AUTOPLAY_LOOP",
+  "color_cadence": {
+    "dominant_base": "#080C0E",
+    "alternating_tone": "#11181C",
+    "brand_sage": "#80A69A",
+    "brand_water": "#94B6AA",
+    "accent_court_glow": "#FFE54D",
+    "whatsapp_green": "#25D366"
+  },
+  "generative_asset_prompts": [
+    {
+      "target_asset": "hero_cinematic_loop",
+      "recommended_engine": "Kling 1.5 / Runway Gen-3",
+      "aspect_ratio": "16:9",
+      "prompt": "Cinematic 4K slow-motion commercial shot inside an ultra-luxury indoor padel club in Dubai with soaring black industrial ceilings and high-tech LED ring fixtures. A professional padel athlete in sleek athletic gear hits an explosive leaping vibora smash on a championship royal blue Mondo Supercourt padel court surrounded by pristine panoramic crystal glass walls. Volumetric stadium lighting, sharp ball trajectory, dramatic camera push-in at 60fps, photorealistic luxury sports commercial grade --ar 16:9 --v 6.0"
+    },
+    {
+      "target_asset": "architectural_hero_render",
+      "recommended_engine": "FLUX.1 Pro / Midjourney v6.1",
+      "aspect_ratio": "16:9",
+      "prompt": "Architectural interior photography of Dubai's premier indoor padel facility at Padelae Al Quoz. High-ceiling modern warehouse with matte black acoustic panels, 18 illuminated panoramic glass padel courts with vivid blue turf, glowing neon teal accent lines along the courtside player walkways, luxury lounge mezzanine with artisanal espresso bar and glass railings overlooking tournament court. Soft ambient lighting, Hasselblad 24mm wide angle, crisp reflections on court glass, editorial luxury magazine cover quality --ar 16:9 --v 6.1"
+    }
+  ],
+  "commercial_dna": {
+    "tagline": "Rise Your Game. Master Your Skills.",
+    "sub_headline": "The UAE's Premier Indoor Padel Sanctuary \u2022 18 Panoramic Air-Conditioned Courts, Elite Coaching & Luxury Hospitality in Dubai & Abu Dhabi",
+    "rating_telemetry": {
+      "average_score": 4.8,
+      "review_count": "380+ Verified Players",
+      "scale": 5.0,
+      "source_label": "Google Reviews (Padelae Dubai & FM Academy)",
+      "source_url": "https://maps.google.com/?cid=padelae_dubai"
+    },
+    "offerings_catalog": [
+      {
+        "slug": "courts",
+        "name": "Championship Indoor Panoramic Courts",
+        "description": "18 air-conditioned panoramic glass courts built to World Padel Tour specifications with shock-absorbing Mondo Supercourt turf and shadowless LED lighting.",
+        "rates": {
+          "peak_60m": "AED 300",
+          "peak_90m": "AED 450",
+          "open_match_60m": "AED 75 / player",
+          "open_match_90m": "AED 112.5 / player"
+        }
+      },
+      {
+        "slug": "academy",
+        "name": "Padelae Elite Coaching Academy",
+        "description": "Head Coach Andr\u00e9 Lerias and Spanish pro trainers offering technical video analysis, match tactics, private 1-on-1 coaching, and structured clinics.",
+        "rates": {
+          "single_lesson_1p": "AED 320",
+          "single_lesson_2p": "AED 450",
+          "package_5_lessons": "AED 1,440",
+          "package_10_lessons": "AED 2,560"
+        }
+      },
+      {
+        "slug": "tournaments",
+        "name": "Tournaments & Corporate Events",
+        "description": "Weekly Americano & Mexicano social brackets, corporate team tournaments, private court buyouts, and customized catering.",
+        "rates": {
+          "entry_fee": "From AED 120 / player",
+          "corporate_half_day": "Inquire for Bespoke Package"
+        }
+      },
+      {
+        "slug": "cafe-proshop",
+        "name": "The Bandeja Caf\u00e9 & Pro Shop",
+        "description": "Artisanal espresso, cold-pressed juices, matcha, protein recovery bar, and official gear from Head, Bullpadel, Nox, and Babolat.",
+        "rates": {
+          "racket_rental": "AED 35",
+          "pro_rackets": "AED 650 \u2013 AED 1,450"
+        }
+      }
+    ],
+    "target_inquiry_email": "info@padelae.com",
+    "whatsapp_phone": "+971545872384"
+  },
+  "harvested_assets": {
+    "branding": [
+      "public/assets/branding/logo_white.png",
+      "public/assets/branding/logo-2-01.webp",
+      "public/assets/branding/Head-Logo-768x432-1.png",
+      "public/assets/branding/Capa-2negrograd.png"
+    ],
+    "courts": [
+      "public/assets/courts/Rectangle-1.png",
+      "public/assets/courts/IMG_2EFAFF5941D8-1.jpeg",
+      "public/assets/courts/IMG_829DF650DAD0-1.jpeg",
+      "public/assets/courts/64df10b84b64e.jpg",
+      "public/assets/courts/64a54de328a3f.jpg",
+      "public/assets/courts/63353f2a0d6a3.jpg",
+      "public/assets/courts/639adbf4cd3ab.jpg",
+      "public/assets/courts/14350809_5472468-1.png",
+      "public/assets/courts/Screenshot_2025-10-21_at_12.40.45_PM-removebg-preview.png"
+    ],
+    "coaching": [
+      "public/assets/coaching/Martin-Di-Nenno-volee-de-revers-Madrid-P1-2023-scaled-Background-Removed-e1706706342816.png",
+      "public/assets/coaching/058A0088-scaled.jpg",
+      "public/assets/coaching/058A0196-scaled.jpg",
+      "public/assets/coaching/058A0210-scaled.jpg",
+      "public/assets/coaching/058A0327-scaled.jpg",
+      "public/assets/coaching/058A0331-scaled.jpg",
+      "public/assets/coaching/side-view-woman-holding-palette.jpg",
+      "public/assets/coaching/side-view-woman-playing-paddle-tennis.jpg",
+      "public/assets/coaching/side-view-woman-playing-paddle-tennis-1-e1705946606441.jpg"
+    ],
+    "community": [
+      "public/assets/community/556026282_122137806038853368_576176682677052603_n.jpg",
+      "public/assets/community/550172711_122136803036853368_4169463318257847931_n.jpg",
+      "public/assets/community/545272477_18054712652535326_3044719904663589585_n.jpg"
+    ],
+    "partners": [
+      "public/assets/partners/Mashreq-Bank_idRkzSrbkL_0-1.png",
+      "public/assets/branding/Head-Logo-768x432-1.png"
+    ],
+    "videos": [
+      "public/assets/videos/hero_rally_720.mp4",
+      "public/assets/videos/court_action_720.mp4",
+      "public/assets/videos/smash_720.mp4"
+    ]
+  },
+  "checkpoint_approved": true,
+  "deployment": {
+    "preview_port": 8085,
+    "preview_url": "http://localhost:8085/",
+    "artifact_preview": "/Users/arshaan/.gemini/antigravity/brain/635cd1c3-3a55-46f5-8e49-737016b8dec6/padelae_live_preview.html"
+  }
+}
